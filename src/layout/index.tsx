@@ -38,32 +38,35 @@ const Layout = (props: IMainProps) => {
             }}
           >
             <span>
-              <span
-                style={{ cursor: "pointer" }}
+              <button
+                role="button"
+                style={{ cursor: "pointer", border: 0 }}
                 onClick={() => {
                   handleChangeLanguage("en");
                 }}
               >
                 EN
-              </span>{" "}
+              </button>{" "}
               |{" "}
-              <span
-                style={{ cursor: "pointer" }}
+              <button
+                role="button"
+                style={{ cursor: "pointer", border: 0 }}
                 onClick={() => {
                   handleChangeLanguage("fr");
                 }}
               >
                 FR
-              </span>{" "}
+              </button>{" "}
               |{" "}
-              <span
-                style={{ cursor: "pointer" }}
+              <button
+                role="button"
+                style={{ cursor: "pointer", border: 0 }}
                 onClick={() => {
                   handleChangeLanguage("ar");
                 }}
               >
                 AR
-              </span>
+              </button>
             </span>
             <Link href={"/contact-us"}>
               <FormattedMessage id="page.home.link.contactus" />
