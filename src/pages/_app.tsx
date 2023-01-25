@@ -14,7 +14,7 @@ import Layout from "./layout";
 const messages = {
   ar,
   fr,
-  "en-US": en,
+  en,
 };
 function getDirection(locale: any) {
   if (locale === "ar") {
