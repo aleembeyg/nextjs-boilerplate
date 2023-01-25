@@ -2,10 +2,19 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/Layout.module.css";
+import { useRouter } from "next/router";
 type IMainProps = {
   children: ReactNode;
 };
 const Layout = (props: IMainProps) => {
+  const router = useRouter();
+  const handleChangeLanguage = (lang: any) => {
+    router.push(router.basePath, router.asPath, { locale: lang });
+
+    router.events.on("routeChangeComplete", () => {
+      router.reload();
+    });
+  };
   return (
     <div
       className="container-fluid"
@@ -33,17 +42,32 @@ const Layout = (props: IMainProps) => {
             }}
           >
             <span>
-              <a rel="alternate" href={`../`} hrefLang="x-default">
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  handleChangeLanguage("en");
+                }}
+              >
                 EN
-              </a>{" "}
+              </span>{" "}
               |{" "}
-              <a rel="alternate" href={`../fr`} hrefLang="fr">
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  handleChangeLanguage("fr");
+                }}
+              >
                 FR
-              </a>{" "}
+              </span>{" "}
               |{" "}
-              <a rel="alternate" href={`../ar`} hrefLang="ar">
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  handleChangeLanguage("ar");
+                }}
+              >
                 AR
-              </a>
+              </span>
             </span>
             <Link href={"/contact-us"}>
               <FormattedMessage id="page.home.link.contactus" />
