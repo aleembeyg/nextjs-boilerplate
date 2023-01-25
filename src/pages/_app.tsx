@@ -7,7 +7,7 @@ import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import ar from "@/lang/ar.json";
-import en from "@/lang/en-Us.json";
+import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
 import Layout from "./layout";
 
