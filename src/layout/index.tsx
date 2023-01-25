@@ -58,7 +58,6 @@ const Layout = (props: IMainProps) => {
         </div>
       </header>
       <div>{props.children}</div>
-
       <footer className="p-3" style={{ backgroundColor: "#eee" }}>
         <div style={{ maxWidth: "1100px", margin: "auto" }}>
           2023 SendCredit

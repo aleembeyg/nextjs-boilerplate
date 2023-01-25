@@ -9,7 +9,7 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
-import Layout from "./layout";
+import Layout from "../layout";
 
 const messages = {
   ar,
