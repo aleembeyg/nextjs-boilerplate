@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
+import styles from "@/styles/Layout.module.css";
 type IMainProps = {
   children: ReactNode;
 };
@@ -18,15 +19,7 @@ const Layout = (props: IMainProps) => {
       }}
     >
       <header style={{ backgroundColor: "#eee" }}>
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.header}>
           <h1 className="p-3" style={{ fontSize: "25px", fontWeight: "bold" }}>
             <Link href={"/"}>
               <FormattedMessage id="page.home.head.title" />
@@ -52,8 +45,12 @@ const Layout = (props: IMainProps) => {
                 AR
               </a>
             </span>
-            <Link href={"/contact-us"}><FormattedMessage id="page.home.link.contactus" /></Link>
-            <Link href={"/users"}><FormattedMessage id="page.home.link.users" /></Link>
+            <Link href={"/contact-us"}>
+              <FormattedMessage id="page.home.link.contactus" />
+            </Link>
+            <Link href={"/users"}>
+              <FormattedMessage id="page.home.link.users" />
+            </Link>
           </nav>
         </div>
       </header>

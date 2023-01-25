@@ -50,6 +50,16 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router]);
 
+  useEffect(() => {
+    let dir = router.locale == "ar" ? "rtl" : "ltr";
+    let lang = router.locale == "ar" ? "ar" : router.locale;
+    const doc: any = document;
+    if (doc) {
+      doc.querySelector("html").setAttribute("dir", dir);
+      doc.querySelector("html").setAttribute("lang", lang);
+    }
+  }, [router.locale]);
+
   return (
     <>
       <Head>
