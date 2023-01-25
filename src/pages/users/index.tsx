@@ -1,3 +1,4 @@
+import { axiosInstance } from "@/services/axiosInterceptor";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -56,10 +57,8 @@ const Users = ({ users }: any) => {
 export default Users;
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    "https://randomuser.me/api/?results=12&gneder=female"
-  );
-  const users = await res.json();
+  const res = await axiosInstance.get("?results=12&gneder=female");
+  const users = await res.data;
   return {
     props: {
       users,

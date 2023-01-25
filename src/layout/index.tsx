@@ -10,10 +10,6 @@ const Layout = (props: IMainProps) => {
   const router = useRouter();
   const handleChangeLanguage = (lang: any) => {
     router.push(router.basePath, router.asPath, { locale: lang });
-
-    router.events.on("routeChangeComplete", () => {
-      router.reload();
-    });
   };
   return (
     <div

@@ -6,6 +6,9 @@ import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { persistor, store } from "@/redux/store";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
@@ -23,7 +26,7 @@ function getDirection(locale: any) {
 
   return "ltr";
 }
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
@@ -95,8 +98,10 @@ export default function App({ Component, pageProps }: AppProps) {
               <Component {...pageProps} dir={getDirection(locale)} />
             )}
           </div>
-        </Layout>
+        </Layout>{" "}
       </IntlProvider>
     </>
   );
 }
+
+export default App;
