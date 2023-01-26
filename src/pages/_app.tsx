@@ -2,14 +2,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
 import Layout from "../layout";
+import { wrapper } from "@/redux/store";
 
 const messages = {
   ar,
@@ -101,4 +101,4 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default App;
+export default wrapper.withRedux(App);

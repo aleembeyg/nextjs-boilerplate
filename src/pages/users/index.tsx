@@ -1,10 +1,18 @@
+import {
+  getUsersListRequest,
+  getUsersListRequestSuccess,
+} from "@/redux/actions/user";
+import { selectUsers } from "@/redux/selectors/user";
+import { wrapper } from "@/redux/store";
 import { axiosInstance } from "@/services/axiosInterceptor";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useSelector } from "react-redux";
 
 const Users = ({ users }: any) => {
-  const { locales } = useRouter();
+
+  const usersList = useSelector(selectUsers);
 
   const intl = useIntl();
 
@@ -25,8 +33,8 @@ const Users = ({ users }: any) => {
         </h1>
       </div>
       <div className="row" style={{ maxWidth: "1100px", margin: "auto" }}>
-        {users &&
-          users.results.map((item: any, index: number) => (
+        {usersList &&
+          usersList.results.map((item: any, index: number) => (
             <div data-id={item.id} key={index} className="p-2 col-sm-3">
               <div className="card">
                 <img
@@ -54,14 +62,15 @@ const Users = ({ users }: any) => {
   );
 };
 
-export default Users;
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    const res = await axiosInstance.get("?results=12&gneder=female");
+    const users = await res.data;
+    store.dispatch(getUsersListRequestSuccess(users));
+    return {
+      props: { users },
+    };
+  }
+);
 
-export async function getServerSideProps() {
-  const res = await axiosInstance.get("?results=12&gneder=female");
-  const users = await res.data;
-  return {
-    props: {
-      users,
-    },
-  };
-}
+export default Users;
