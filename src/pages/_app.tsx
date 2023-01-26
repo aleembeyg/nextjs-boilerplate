@@ -24,13 +24,15 @@ function getDirection(locale: any) {
   return "ltr";
 }
 function App({ Component, pageProps }: AppProps) {
+
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
+
   const [loader, setLoader] = useState(false);
   const { locale } = useRouter();
-  const localeStr: string = locale || "en";
   const router = useRouter();
+  const localeStr: string = locale || "en";
 
   useEffect(() => {
     const handleRouteChangeStart = (url: any) => {

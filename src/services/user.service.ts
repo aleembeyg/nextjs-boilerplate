@@ -1,6 +1,7 @@
-import { axiosInstance } from "./axiosInterceptor"
+import ApiClient from "@/services/axiosInterceptor";
 
 export const getUsersRequest = async () => {
-    const response:any = await axiosInstance.get("?results=12&gneder=female");
+    console.log(ApiClient.getUri())
+    const response:any = await ApiClient.get("?results=12&gneder=female");
     return await response.data;
 }

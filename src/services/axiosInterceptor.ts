@@ -1,28 +1,22 @@
 import axios from "axios";
 
-export const axiosInstance = axios.create({
-  baseURL: process.env.API_URL,
-  headers: {
-    "Content-Type": "application/json"
-  }
-});
+const ApiClient = () => {
+  debugger;
+  const instance = axios.create({ baseURL: process.env.API_URL });
+  instance.interceptors.request.use((request) => {
+    return request;
+  });
 
-axiosInstance.interceptors.request.use(
-  function (config) {
-    // Do something before request is sent
-    return config;
-  },
-  function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  }
-);
+  instance.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(`error`, error);
+    }
+  );
 
-axiosInstance.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
-    return Promise.reject(error);
-  }
-);
+  return instance;
+};
+
+export default ApiClient();

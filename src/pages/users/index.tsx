@@ -1,25 +1,30 @@
-import {
-  getUsersListRequest,
-  getUsersListRequestSuccess,
-} from "@/redux/actions/user";
+import Head from "next/head";
 import { selectUsers } from "@/redux/selectors/user";
 import { wrapper } from "@/redux/store";
-import { axiosInstance } from "@/services/axiosInterceptor";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import { getUsersRequest } from "@/services/user.service";
+import { errorInfo } from "@/utils/index.utils";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getUsersListRequestFailure,
+  getUsersListRequestSuccess,
+} from "@/redux/actions/user";
 
-const Users = ({ users }: any) => {
-
+const Users = () => {
   const usersList = useSelector(selectUsers);
-
   const intl = useIntl();
-
+  //Page SEO Information
   const title = intl.formatMessage({ id: "page.users.head.title" });
   const description = intl.formatMessage({
     id: "page.users.head.meta.description",
   });
+
+  const dispatch = useDispatch();
+
+  const handleRefreshData = async () => {
+    const res = await getUsersRequest();
+    await dispatch(getUsersListRequestSuccess(res));
+  };
 
   return (
     <>
@@ -34,6 +39,7 @@ const Users = ({ users }: any) => {
       </div>
       <div className="row" style={{ maxWidth: "1100px", margin: "auto" }}>
         {usersList &&
+          usersList.results &&
           usersList.results.map((item: any, index: number) => (
             <div data-id={item.id} key={index} className="p-2 col-sm-3">
               <div className="card">
@@ -64,9 +70,15 @@ const Users = ({ users }: any) => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
-    const res = await axiosInstance.get("?results=12&gneder=female");
-    const users = await res.data;
-    store.dispatch(getUsersListRequestSuccess(users));
+    let users = {};
+    try {
+      const res = await getUsersRequest();
+      users = res;
+      store.dispatch(getUsersListRequestSuccess(users));
+    } catch (e: any) {
+      store.dispatch(getUsersListRequestFailure(errorInfo(e)));
+    }
+
     return {
       props: { users },
     };
