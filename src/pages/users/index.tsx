@@ -17,6 +17,9 @@ import {
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+
 const Users = () => {
   const usersList = useSelector(selectUsers);
   const errorMessage = useSelector(selectError);
@@ -27,6 +30,7 @@ const Users = () => {
   const description = intl.formatMessage({
     id: "page.users.head.meta.description",
   });
+
   const dispatch = useDispatch();
 
   const handleRefreshData = async () => {
@@ -53,7 +57,9 @@ const Users = () => {
         }}
       >
         {loadingData !== APIStatus.pending && (
-          <button className="btn btn-primary" onClick={handleRefreshData}>Update Users</button>
+          <button className="btn btn-primary" onClick={handleRefreshData}>
+            Update Users
+          </button>
         )}
         <div className="p-2" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>

@@ -13,6 +13,7 @@ export default function Home() {
   const description = intl.formatMessage({
     id: "page.home.head.meta.description",
   });
+
   return (
     <>
       <Head>
@@ -26,7 +27,9 @@ export default function Home() {
           <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>
             <FormattedMessage id="page.home.title" />
           </h1>
-          <p><FormattedMessage id="page.home.description" /></p>
+          <p>
+            <FormattedMessage id="page.home.description" />
+          </p>
         </div>
       </main>
     </>

@@ -3,14 +3,21 @@ import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
+import { useSession, signOut } from "next-auth/react";
+
 type IMainProps = {
   children: ReactNode;
 };
+
 const Layout = (props: IMainProps) => {
   const router = useRouter();
   const handleChangeLanguage = (lang: any) => {
     router.push(router.basePath, router.asPath, { locale: lang });
   };
+  const handleLogout = () => {
+    signOut({ callbackUrl: "/login" });
+  };
+  const { data: session } = useSession();
   return (
     <div
       className="container-fluid"
@@ -32,7 +39,7 @@ const Layout = (props: IMainProps) => {
           </h1>
           <nav
             style={{
-              minWidth: "250px",
+              minWidth: "310px",
               display: "flex",
               justifyContent: "space-between",
             }}
@@ -68,12 +75,31 @@ const Layout = (props: IMainProps) => {
                 AR
               </button>
             </span>
+            &nbsp;
             <Link href={"/contact-us"}>
               <FormattedMessage id="page.home.link.contactus" />
             </Link>
+            &nbsp;&nbsp;
             <Link href={"/users"}>
               <FormattedMessage id="page.home.link.users" />
             </Link>
+            &nbsp;&nbsp;
+            {session == null && (
+              <Link href={"/login"}>
+                <FormattedMessage id="page.home.link.login" />
+              </Link>
+            )}
+            {session && (
+              <button
+                role="button"
+                style={{ cursor: "pointer", border: 0 }}
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                Logout
+              </button>
+            )}
           </nav>
         </div>
       </header>

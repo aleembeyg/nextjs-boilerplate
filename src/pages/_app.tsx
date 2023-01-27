@@ -12,6 +12,7 @@ import Layout from "../layout";
 import { wrapper } from "@/redux/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { SessionProvider } from "next-auth/react";
 
 const messages = {
   ar,
@@ -71,37 +72,42 @@ function App({ Component, pageProps }: AppProps) {
         </title>
       </Head>
       <IntlProvider locale={localeStr} messages={Object(messages)[localeStr]}>
-        <ToastContainer />
-        <Layout>
-          <div>
-            {loader ? (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100vh",
-                  margin: "auto",
-                  position: "absolute",
-                  right: 0,
-                  left: 0,
-                  top: 0,
-                  zIndex: 1000,
-                  background: "rgba(0,0,0,0.2)",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div className="spinner-grow text-disable" role="status">
-                  <span className="sr-only"></span>
+        <SessionProvider session={pageProps.session}>
+          <ToastContainer />
+          <Layout>
+            <div>
+              {loader ? (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    margin: "auto",
+                    position: "absolute",
+                    right: 0,
+                    left: 0,
+                    top: 0,
+                    zIndex: 1000,
+                    background: "rgba(0,0,0,0.2)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="spinner-grow text-disable" role="status">
+                    <span className="sr-only"></span>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="p-3" style={{ maxWidth: "1100px", margin: "auto" }}>
-                <Component {...pageProps} dir={getDirection(locale)} />
-              </div>
-            )}
-          </div>
-        </Layout>{" "}
+              ) : (
+                <div
+                  className="p-3"
+                  style={{ maxWidth: "1100px", margin: "auto" }}
+                >
+                  <Component {...pageProps} dir={getDirection(locale)} />
+                </div>
+              )}
+            </div>
+          </Layout>
+        </SessionProvider>
       </IntlProvider>
     </>
   );
