@@ -12,7 +12,7 @@ const Login = () => {
         <title>SendCredit - Login</title>
       </Head>
       <div className="card p-4" style={{ maxWidth: "400px", margin: "auto" }}>
-        <form className="needs-validation" novalidate>
+        <form className="needs-validation" noValidate>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
@@ -24,7 +24,7 @@ const Login = () => {
               required
             />
             <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
+              Well never share your email with anyone else.
             </small>
           </div>
           <div className="form-group">
@@ -67,7 +67,7 @@ const Login = () => {
         </form>
         <br />
         <p className="text-muted">
-          Don't have account yet?&nbsp;<Link href={"/"}>Signup</Link>
+          Dont have account yet?&nbsp;<Link href={"/"}>Signup</Link>
         </p>
       </div>
     </>
