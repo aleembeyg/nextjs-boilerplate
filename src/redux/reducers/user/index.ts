@@ -16,13 +16,23 @@ const usersListInitState: userList = {
 const userListReducer = (state = usersListInitState, action: any) => {
   switch (action.type) {
     case USER_REQUEST_TYPES.GET_ALL_REQUEST_START: {
-      return { ...state, users: null, requestStatus: APIStatus.pending };
+      return { ...state, users: null, requestStatus: APIStatus.pending, error: null };
     }
     case USER_REQUEST_TYPES.GET_ALL_REQUEST_SUCCESS: {
-      return { ...state, users: action.payload, requestStatus: APIStatus.success };
+      return {
+        ...state,
+        users: action.payload,
+        requestStatus: APIStatus.success,
+        error: null,
+      };
     }
     case USER_REQUEST_TYPES.GET_ALL_REQUEST_FAILURE: {
-      return { ...state, users: null, error: action.payload, requestStatus: APIStatus.failure };
+      return {
+        ...state,
+        users: null,
+        error: action.payload,
+        requestStatus: APIStatus.failure,
+      };
     }
     default:
       return state;

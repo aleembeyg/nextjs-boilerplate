@@ -1,15 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  devIndicators: {
+    buildActivity: false,
+  },
   reactStrictMode: true,
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: ['en', 'fr', 'ar'],
+    locales: ["en", "fr", "ar"],
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: 'en',
-    localeDetection: false
-  }
-}
+    defaultLocale: "en",
+    localeDetection: false,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

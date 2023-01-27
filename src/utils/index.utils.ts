@@ -10,6 +10,4 @@ export const createAction = (type: string = "", payload: any = null) => ({
   payload,
 });
 
-export const errorInfo = (error: any) => ({
-  error: JSON.stringify(error),
-});
+export const errorInfo = (error: any) => error.message;

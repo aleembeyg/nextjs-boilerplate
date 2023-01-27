@@ -10,6 +10,8 @@ import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
 import Layout from "../layout";
 import { wrapper } from "@/redux/store";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const messages = {
   ar,
@@ -24,7 +26,6 @@ function getDirection(locale: any) {
   return "ltr";
 }
 function App({ Component, pageProps }: AppProps) {
-
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
@@ -70,6 +71,7 @@ function App({ Component, pageProps }: AppProps) {
         </title>
       </Head>
       <IntlProvider locale={localeStr} messages={Object(messages)[localeStr]}>
+        <ToastContainer />
         <Layout>
           <div>
             {loader ? (
@@ -94,7 +96,9 @@ function App({ Component, pageProps }: AppProps) {
                 </div>
               </div>
             ) : (
-              <Component {...pageProps} dir={getDirection(locale)} />
+              <div className="p-3" style={{ maxWidth: "1100px", margin: "auto" }}>
+                <Component {...pageProps} dir={getDirection(locale)} />
+              </div>
             )}
           </div>
         </Layout>{" "}

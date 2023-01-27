@@ -1,30 +1,43 @@
 import Head from "next/head";
-import { selectUsers } from "@/redux/selectors/user";
+import {
+  selectError,
+  selectLoadingStatus,
+  selectUsers,
+} from "@/redux/selectors/user";
 import { wrapper } from "@/redux/store";
 import { getUsersRequest } from "@/services/user.service";
-import { errorInfo } from "@/utils/index.utils";
+import { APIStatus, errorInfo } from "@/utils/index.utils";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  getUsersListRequest,
   getUsersListRequestFailure,
   getUsersListRequestSuccess,
 } from "@/redux/actions/user";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const Users = () => {
   const usersList = useSelector(selectUsers);
+  const errorMessage = useSelector(selectError);
+  const loadingData = useSelector(selectLoadingStatus);
   const intl = useIntl();
   //Page SEO Information
   const title = intl.formatMessage({ id: "page.users.head.title" });
   const description = intl.formatMessage({
     id: "page.users.head.meta.description",
   });
-
   const dispatch = useDispatch();
 
   const handleRefreshData = async () => {
-    const res = await getUsersRequest();
-    await dispatch(getUsersListRequestSuccess(res));
+    dispatch(getUsersListRequest());
   };
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+    }
+  }, [errorMessage]);
 
   return (
     <>
@@ -32,12 +45,40 @@ const Users = () => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <div className="p-2" style={{ textAlign: "center" }}>
-        <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>
-          <FormattedMessage id="page.users.title" />
-        </h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {loadingData !== APIStatus.pending && (
+          <button className="btn btn-primary" onClick={handleRefreshData}>Update Users</button>
+        )}
+        <div className="p-2" style={{ textAlign: "center" }}>
+          <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>
+            <FormattedMessage id="page.users.title" />
+          </h1>
+        </div>
       </div>
-      <div className="row" style={{ maxWidth: "1100px", margin: "auto" }}>
+      <div
+        className="row"
+        style={{ maxWidth: "1100px", margin: "auto", minWidth: "200px" }}
+      >
+        {loadingData === APIStatus.pending && (
+          <div
+            style={{
+              height: "450px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div className="spinner-grow text-disable" role="status">
+              <span className="sr-only"></span>
+            </div>
+          </div>
+        )}
         {usersList &&
           usersList.results &&
           usersList.results.map((item: any, index: number) => (
