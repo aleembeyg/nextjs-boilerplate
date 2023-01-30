@@ -23,7 +23,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main style={{ maxWidth: "1100px", margin: "auto" }}>
-        <div className="p-5" style={{ textAlign: "center" }}>
+        <div
+          className="card p-5 shadow-sm"
+          style={{ textAlign: "center", maxWidth: "500px", margin: "auto" }}
+        >
           <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>
             <FormattedMessage id="page.home.title" />
           </h1>

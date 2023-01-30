@@ -4,30 +4,62 @@ import { signIn, signOut } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { useRouter } from "next/router";
-const Login = ({ locale, defaultLocale }: any) => {
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+const Login = ({}: any) => {
   const router = useRouter();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [validate, setValidate] = useState(false);
   const handleGoogleSignIn = async () => {
     signIn("google", {
       callbackUrl:
-        (router.defaultLocale !== router.locale ? "/" + locale : "") + "/user",
+        (router.defaultLocale !== router.locale ? "/" + router.locale : "") +
+        "/user",
     });
   };
+
+  const handleSubmitUser = async () => {
+    setLoading(true);
+    await new Promise<void>((resolve, request) =>
+      setTimeout(() => {
+        resolve();
+        setLoading(false);
+        toast.error("We'r sorry we couldn't found this user, Please use another id.");
+      }, 2000)
+    );
+  };
+
+  useEffect(() => {
+    if (userName.trim() == "" || password.trim() == "") {
+      setValidate(false);
+    } else {
+      setValidate(true);
+    }
+  }, [userName, password]);
 
   return (
     <>
       <Head>
         <title>SendCredit - Login</title>
       </Head>
-      <div className="card p-4" style={{ maxWidth: "400px", margin: "auto" }}>
-        <form method="post" className="needs-validation" noValidate>
+      <div
+        className="card p-5 shadow-sm"
+        style={{ maxWidth: "400px", margin: "auto" }}
+      >
+        <form method="post" className="needs-validation">
           <div className="form-group">
+            <p>{loading}</p>
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
+              value={userName}
               type="email"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              onChange={(e) => setUserName(e.target.value)}
               required
             />
             <small id="emailHelp" className="form-text text-muted">
@@ -37,20 +69,32 @@ const Login = ({ locale, defaultLocale }: any) => {
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
             <input
+              value={password}
               type="password"
               className="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
           <br />
           <button
-            type="submit"
-            className="btn btn-success btn-block"
+            type="button"
+            className={`btn btn-block text-white ${
+              validate ? "bg-success" : "bg-secondary"
+            }`}
             style={{ width: "100%" }}
+            onClick={handleSubmitUser}
           >
-            Login
+            {!loading && <div>Login</div>}
+            {loading && (
+              <div
+                className="spinner-grow text-light"
+                style={{ width: "18px", height: "18px" }}
+                role="status"
+              ></div>
+            )}
           </button>
           <br />
           <br />
