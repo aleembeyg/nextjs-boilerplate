@@ -2,7 +2,10 @@ This is a [Next.js](https://nextjs.org/) boilerplate using bootstrapped.
 
 After download this project please open this project in VS Code and use this command in terminal "npm i"
 
-## Package Details
+## Demo
+App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleembeyg.vercel.app/)
+
+## Packages Detail:
 - redux
 - react-redux
 - redux-saga
@@ -15,7 +18,7 @@ After download this project please open this project in VS Code and use this com
 - react-intl
 - axios
 
-## Features
+## Main Features:
 - Home Page
 - Users Listing
 - User Login with NextAuth
