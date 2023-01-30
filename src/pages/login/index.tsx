@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { signIn, signOut } from "next-auth/react";
-import { Context } from "react-intl/src/components/injectIntl";
+import { FcGoogle } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 import { useRouter } from "next/router";
 const Login = ({ locale, defaultLocale }: any) => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const Login = ({ locale, defaultLocale }: any) => {
         <title>SendCredit - Login</title>
       </Head>
       <div className="card p-4" style={{ maxWidth: "400px", margin: "auto" }}>
-        <form className="needs-validation" noValidate>
+        <form className="needs-validation" novalidate>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
@@ -55,20 +56,22 @@ const Login = ({ locale, defaultLocale }: any) => {
           <br />
           <button
             type="button"
-            className="btn btn-primary btn-block"
-            style={{ width: "100%" }}
+            className="btn btn-block shadow-sm"
+            style={{ width: "100%", border: "1px solid #ccc" }}
             onClick={handleGoogleSignIn}
           >
-            Signin with Google
+            Signin with Google&nbsp;
+            <FcGoogle />
           </button>
           <br />
           <br />
           <button
             type="button"
-            className="btn btn-secondary btn-block bg-black text-white"
-            style={{ width: "100%" }}
+            className="btn btn-block shadow-sm"
+            style={{ width: "100%", border: "1px solid #ccc" }}
           >
-            Signin with Github
+            Signin with Github&nbsp;
+            <BsGithub />
           </button>
         </form>
         <br />
