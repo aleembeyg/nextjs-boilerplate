@@ -2,6 +2,26 @@ This is a [Next.js](https://nextjs.org/) boilerplate using bootstrapped.
 
 After download this project please open this project in VS Code and use this command in terminal "npm i"
 
+## Package Details
+-- redux
+-- react-redux
+-- redux-saga
+-- redux-persist
+-- bootstrap
+-- react-icons
+-- next-auth
+-- react-toastify
+-- i18n
+-- react-intl
+-- axios
+
+## Features
+Home Page
+Users Listing
+User Login with NextAuth
+Multiligual
+
+
 ## Getting Started
 
 First, run the development server:
