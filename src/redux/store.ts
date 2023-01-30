@@ -41,5 +41,5 @@ sagaMiddleware.run(rootSaga);
 const initStore = () => {
   return store;
 };
-
+export const persistor = persistStore(store);
 export const wrapper = createWrapper(initStore);

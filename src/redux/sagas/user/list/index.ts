@@ -1,4 +1,4 @@
-import { getUsersRequest } from "@/redux/data/user";
+import { getUsersRequest } from "@/services/user.service";
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import {
   getUsersListRequestFailure,

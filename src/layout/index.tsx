@@ -111,7 +111,7 @@ const Layout = (props: IMainProps) => {
                   <FormattedMessage id="page.home.link.contactus" />
                 </Link>
                 &nbsp;&nbsp;
-                <Link href={"/users"} className="nav-item nav-link">
+                <Link href={"/user/users"} className="nav-item nav-link">
                   <FormattedMessage id="page.home.link.users" />
                 </Link>
                 &nbsp;&nbsp;
@@ -126,7 +126,7 @@ const Layout = (props: IMainProps) => {
                     style={{
                       cursor: "pointer",
                       border: 0,
-                      background: "#fff",
+                      background: "none",
                       color: "#333",
                     }}
                     className="nav-item nav-link"

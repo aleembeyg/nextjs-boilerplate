@@ -36,6 +36,10 @@ const Users = () => {
   };
 
   useEffect(() => {
+    dispatch(getUsersListRequestSuccess(usersList));
+  }, []);
+
+  useEffect(() => {
     if (errorMessage) {
       toast.error(errorMessage);
     }

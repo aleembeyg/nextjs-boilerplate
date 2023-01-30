@@ -9,10 +9,12 @@ import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
 import Layout from "../layout";
-import { wrapper } from "@/redux/store";
+import { persistor, store, wrapper } from "@/redux/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 const messages = {
   ar,
@@ -66,42 +68,44 @@ function App({ Component, pageProps }: AppProps) {
         </title>
       </Head>
       <IntlProvider locale={localeStr} messages={Object(messages)[localeStr]}>
-        <SessionProvider session={pageProps.session}>
-          <ToastContainer />
-          <Layout>
-            <div>
-              {loader ? (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100vh",
-                    margin: "auto",
-                    position: "absolute",
-                    right: 0,
-                    left: 0,
-                    top: 0,
-                    zIndex: 1000,
-                    background: "rgba(0,0,0,0)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div className="spinner-grow text-disable" role="status">
-                    <span className="sr-only"></span>
+        <Provider store={store}>
+          <SessionProvider session={pageProps.session}>
+            <ToastContainer />
+            <Layout>
+              <div>
+                {loader ? (
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100vh",
+                      margin: "auto",
+                      position: "absolute",
+                      right: 0,
+                      left: 0,
+                      top: 0,
+                      zIndex: 1000,
+                      background: "rgba(0,0,0,0)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div className="spinner-grow text-disable" role="status">
+                      <span className="sr-only"></span>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div
-                  className="p-3"
-                  style={{ maxWidth: "1100px", margin: "auto" }}
-                >
-                  <Component {...pageProps} />
-                </div>
-              )}
-            </div>
-          </Layout>
-        </SessionProvider>
+                ) : (
+                  <div
+                    className="p-3"
+                    style={{ maxWidth: "1100px", margin: "auto" }}
+                  >
+                    <Component {...pageProps} />
+                  </div>
+                )}
+              </div>
+            </Layout>
+          </SessionProvider>
+        </Provider>
       </IntlProvider>
     </>
   );
