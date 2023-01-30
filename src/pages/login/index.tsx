@@ -19,7 +19,7 @@ const Login = ({ locale, defaultLocale }: any) => {
         <title>SendCredit - Login</title>
       </Head>
       <div className="card p-4" style={{ maxWidth: "400px", margin: "auto" }}>
-        <form className="needs-validation" novalidate>
+        <form method="post" className="needs-validation" noValidate>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
