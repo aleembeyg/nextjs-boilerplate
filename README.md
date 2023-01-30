@@ -1,4 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) boilerplate using bootstrapped. 
+
+After download this project please open this project in VS Code and use this command in terminal "npm i"
+
+## Demo
+App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleembeyg.vercel.app/)
+
+## Packages Detail:
+- redux
+- react-redux
+- redux-saga
+- redux-persist
+- bootstrap
+- react-icons
+- next-auth
+- react-toastify
+- i18n
+- react-intl
+- axios
+
+## Main Features:
+- Home Page
+- Users Listing
+- User Login with NextAuth
+- Multiligual
+
 
 ## Getting Started
 
