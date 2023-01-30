@@ -16,9 +16,7 @@ import {
 } from "@/redux/actions/user";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 const Users = () => {
   const usersList = useSelector(selectUsers);
@@ -116,8 +114,9 @@ const Users = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
+  (store) => async (ctx: any) => {
     let users = {};
+    const session = await getSession(ctx);
     try {
       const res = await getUsersRequest();
       users = res;
@@ -125,10 +124,19 @@ export const getServerSideProps = wrapper.getServerSideProps(
     } catch (e: any) {
       store.dispatch(getUsersListRequestFailure(errorInfo(e)));
     }
-
-    return {
-      props: { users },
-    };
+    if (session) {
+      return {
+        props: { users },
+      };
+    } else {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+        props: { users },
+      };
+    }
   }
 );
 
