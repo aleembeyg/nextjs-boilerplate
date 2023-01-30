@@ -81,7 +81,7 @@ function App({ Component, pageProps }: AppProps) {
                     left: 0,
                     top: 0,
                     zIndex: 1000,
-                    background: "rgba(0,0,0,0.1)",
+                    background: "rgba(0,0,0,0)",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
