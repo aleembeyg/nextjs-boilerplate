@@ -19,13 +19,7 @@ const messages = {
   fr,
   en,
 };
-function getDirection(locale: any) {
-  if (locale === "ar") {
-    return "rtl";
-  }
 
-  return "ltr";
-}
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
@@ -102,7 +96,7 @@ function App({ Component, pageProps }: AppProps) {
                   className="p-3"
                   style={{ maxWidth: "1100px", margin: "auto" }}
                 >
-                  <Component {...pageProps} dir={getDirection(locale)} />
+                  <Component {...pageProps} />
                 </div>
               )}
             </div>
