@@ -1,9 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import { signIn, signOut } from "next-auth/react";
-const Login = () => {
+import { Context } from "react-intl/src/components/injectIntl";
+import { useRouter } from "next/router";
+const Login = ({ locale, defaultLocale }: any) => {
+  const router = useRouter();
   const handleGoogleSignIn = async () => {
-    signIn("google", { callbackUrl: "/user" });
+    signIn("google", {
+      callbackUrl:
+        (router.defaultLocale !== router.locale ? "/" + locale : "") + "/user",
+    });
   };
 
   return (

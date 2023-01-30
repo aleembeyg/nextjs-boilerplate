@@ -12,11 +12,16 @@ type IMainProps = {
 
 const Layout = (props: IMainProps) => {
   const router = useRouter();
+
   const handleChangeLanguage = (lang: any) => {
     router.push(router.basePath, router.asPath, { locale: lang });
   };
   const handleLogout = () => {
-    signOut({ callbackUrl: "/login" });
+    signOut({
+      callbackUrl:
+        (router.defaultLocale !== router.locale ? "/" + router.locale : "") +
+        "/login",
+    });
   };
   const { data: session } = useSession();
   return (
