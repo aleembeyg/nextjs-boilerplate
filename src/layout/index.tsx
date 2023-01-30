@@ -19,17 +19,7 @@ const Layout = (props: IMainProps) => {
   };
   const { data: session } = useSession();
   return (
-    <div
-      className="container-fluid"
-      style={{
-        position: "relative",
-        padding: 0,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        minHeight: "100vh",
-      }}
-    >
+    <div className={`container-fluid ${styles.header_FC}`}>
       <header style={{ backgroundColor: "#eee" }}>
         <div className={styles.header}>
           <h1 className="p-3" style={{ fontSize: "25px", fontWeight: "bold" }}>
