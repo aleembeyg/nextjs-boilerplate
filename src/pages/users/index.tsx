@@ -114,9 +114,9 @@ const Users = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (ctx: any) => {
+  (store) => async (context: any) => {
     let users = {};
-    const session = await getSession(ctx);
+    const session = await getSession(context);
     try {
       const res = await getUsersRequest();
       users = res;
