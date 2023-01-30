@@ -65,7 +65,7 @@ const Login = ({ locale, defaultLocale }: any) => {
           <br />
           <button
             type="button"
-            className="btn btn-secondary btn-block"
+            className="btn btn-secondary btn-block bg-black text-white"
             style={{ width: "100%" }}
           >
             Signin with Github

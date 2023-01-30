@@ -50,8 +50,9 @@ const Layout = (props: IMainProps) => {
               className="navbar-toggler"
               data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse"
+              style={{ border: "0 solid", fontSize: "28px", boxShadow: "none" }}
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon" style={{ stroke: "#eee"}}></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="navbar-nav"></div>
