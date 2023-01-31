@@ -24,7 +24,7 @@ const messages = {
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    require("bootstrap/dist/js/bootstrap.bundle");
   }, []);
 
   const [loader, setLoader] = useState(false);
@@ -63,6 +63,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        
         <title>
           <FormattedMessage id="page.home.title" />
         </title>

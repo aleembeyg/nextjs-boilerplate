@@ -125,7 +125,6 @@ const Layout = (props: IMainProps) => {
                 &nbsp;&nbsp;
                 <Link
                   href={"/user/users"}
-                  data-toggle="collapse"
                   className="nav-item nav-link"
                 >
                   <FormattedMessage id="page.home.link.users" />

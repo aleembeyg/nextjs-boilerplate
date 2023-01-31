@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { getSession, useSession } from "next-auth/react";
-import { useEffect } from "react";
 
 const User = () => {
   const { data: session } = useSession();
