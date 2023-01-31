@@ -33,8 +33,9 @@ const User = () => {
           }}
           href={"/user/users"}
         >
-          <BsArrowRight /> &nbsp;&nbsp;
           <p style={{ margin: 0, padding: 0 }}>Our Valued Customers</p>
+          &nbsp;&nbsp;
+          <BsArrowRight />
         </Link>
       </main>
     </>

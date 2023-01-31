@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { getSession } from "next-auth/react";
 import { HiOutlineRefresh } from "react-icons/hi";
+import Loading from "./loading";
 
 const Users = () => {
   const usersList = useSelector(selectUsers);
@@ -83,21 +84,8 @@ const Users = () => {
         className="row"
         style={{ maxWidth: "1100px", margin: "auto", minWidth: "200px" }}
       >
-        {loadingData === APIStatus.pending && (
-          <div
-            style={{
-              height: "450px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div className="spinner-grow text-disable" role="status">
-              <span className="sr-only"></span>
-            </div>
-          </div>
-        )}
-        {usersList &&
+        {loadingData == APIStatus.pending && <Loading />}
+        {loadingData != APIStatus.pending && usersList &&
           usersList.results &&
           usersList.results.map((item: any, index: number) => (
             <div data-id={item.id} key={index} className="p-2 col-sm-3">

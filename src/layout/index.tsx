@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
@@ -13,10 +13,16 @@ type IMainProps = {
 
 const Layout = (props: IMainProps) => {
   const router = useRouter();
+  const [toggle, setToggle] = useState(false);
 
   const handleChangeLanguage = (lang: any) => {
     router.push(router.basePath, router.asPath, { locale: lang });
   };
+
+  const handleToggler = () => {
+    setToggle(!toggle);
+  };
+
   const handleLogout = () => {
     signOut({
       callbackUrl:
@@ -49,8 +55,7 @@ const Layout = (props: IMainProps) => {
             <button
               type="button"
               className="navbar-toggler"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarCollapse"
+              onClick={handleToggler}
               style={{ border: "0 solid", fontSize: "28px", boxShadow: "none" }}
             >
               <span
@@ -58,7 +63,10 @@ const Layout = (props: IMainProps) => {
                 style={{ stroke: "#eee" }}
               ></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
+            <div
+              className={`collapse navbar-collapse${toggle ? " show" : ""}`}
+              id="navbarCollapse"
+            >
               <div className="navbar-nav"></div>
               <div className="navbar-nav ms-auto">
                 <div
@@ -78,6 +86,7 @@ const Layout = (props: IMainProps) => {
                     }}
                     className="nav-item nav-link"
                     onClick={() => {
+                      setToggle(false);
                       handleChangeLanguage("en");
                     }}
                   >
@@ -94,6 +103,7 @@ const Layout = (props: IMainProps) => {
                     }}
                     className="nav-item nav-link"
                     onClick={() => {
+                      setToggle(false);
                       handleChangeLanguage("fr");
                     }}
                   >
@@ -110,6 +120,7 @@ const Layout = (props: IMainProps) => {
                     }}
                     className="nav-item nav-link"
                     onClick={() => {
+                      setToggle(false);
                       handleChangeLanguage("ar");
                     }}
                   >
@@ -118,7 +129,11 @@ const Layout = (props: IMainProps) => {
                 </div>
                 &nbsp;
                 <li>
-                  <Link href={"/contact-us"} className="nav-item nav-link">
+                  <Link
+                    href={"/contact-us"}
+                    onClick={() => setToggle(false)}
+                    className="nav-item nav-link"
+                  >
                     <FormattedMessage id="page.home.link.contactus" />
                   </Link>
                 </li>
@@ -128,10 +143,22 @@ const Layout = (props: IMainProps) => {
                     href={"/login"}
                     data-toggle="collapse"
                     className="nav-item nav-link"
+                    onClick={() => setToggle(false)}
                   >
                     <HiUserCircle style={{ height: "22px", width: "22px" }} />
                     &nbsp;
                     <FormattedMessage id="page.home.link.login" />
+                  </Link>
+                )}
+                {session && (
+                  <Link
+                    href={"/user"}
+                    data-toggle="collapse"
+                    className="nav-item nav-link"
+                    onClick={() => setToggle(false)}
+                  >
+                    <HiUserCircle style={{ height: "22px", width: "22px" }} />
+                    &nbsp;Profile
                   </Link>
                 )}
                 {session && (
@@ -145,6 +172,7 @@ const Layout = (props: IMainProps) => {
                     }}
                     className="nav-item nav-link"
                     onClick={() => {
+                      setToggle(false);
                       handleLogout();
                     }}
                   >
