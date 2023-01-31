@@ -1,0 +1,14 @@
+{
+  "results": {
+    "category": {
+      "title": "Popular Products",
+      "products": [
+        {
+          "id": 1,
+          "name": "Telenor",
+          "image": ""
+        }
+      ]
+    }
+  }
+}

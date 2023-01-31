@@ -21,12 +21,17 @@ const Login = ({}: any) => {
   };
 
   const handleSubmitUser = async () => {
+    if (!validate) {
+      return false;
+    }
     setLoading(true);
     await new Promise<void>((resolve, request) =>
       setTimeout(() => {
         resolve();
         setLoading(false);
-        toast.error("We'r sorry we couldn't found this user, Please use another id.");
+        setUserName("");
+        setPassword("");
+        toast.error("We'r sorry we couldn't found your email.");
       }, 2000)
     );
   };
@@ -44,84 +49,89 @@ const Login = ({}: any) => {
       <Head>
         <title>SendCredit - Login</title>
       </Head>
-      <div
-        className="card p-5 shadow-sm"
-        style={{ maxWidth: "400px", margin: "auto" }}
-      >
-        <form method="post" className="needs-validation">
-          <div className="form-group">
-            <p>{loading}</p>
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-              value={userName}
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
-            <small id="emailHelp" className="form-text text-muted">
-              Well never share your email with anyone else.
-            </small>
+      <div style={{ background: "#6A359C", height: "300px" }}></div>
+      <div className="p-4" style={{ marginTop: "-250px" }}>
+        <div className="p-4">
+          <div
+            className="card p-5 shadow-sm"
+            style={{ maxWidth: "400px", margin: "auto" }}
+          >
+            <form method="post" className="needs-validation">
+              <div className="form-group">
+                <p>{loading}</p>
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <input
+                  value={userName}
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={(e) => setUserName(e.target.value)}
+                  required
+                />
+                <small id="emailHelp" className="form-text text-muted">
+                  Well never share your email with anyone else.
+                </small>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <input
+                  value={password}
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                className={`btn btn-block text-white ${
+                  validate ? "bg-success" : "bg-secondary"
+                }`}
+                style={{ width: "100%" }}
+                onClick={handleSubmitUser}
+              >
+                {!loading && <div>Login</div>}
+                {loading && (
+                  <div
+                    className="spinner-grow text-light"
+                    style={{ width: "18px", height: "18px" }}
+                    role="status"
+                  ></div>
+                )}
+              </button>
+              <br />
+              <br />
+              <button
+                type="button"
+                className="btn btn-block shadow-sm"
+                style={{ width: "100%", border: "1px solid #ccc" }}
+                onClick={handleGoogleSignIn}
+              >
+                Signin with Google&nbsp;
+                <FcGoogle />
+              </button>
+              <br />
+              <br />
+              <button
+                type="button"
+                className="btn btn-block shadow-sm"
+                style={{ width: "100%", border: "1px solid #ccc" }}
+              >
+                Signin with Github&nbsp;
+                <BsGithub />
+              </button>
+            </form>
+            <br />
+            <p className="text-muted">
+              Dont have account yet?&nbsp;<Link href={"/"}>Signup</Link>
+            </p>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              value={password}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <br />
-          <button
-            type="button"
-            className={`btn btn-block text-white ${
-              validate ? "bg-success" : "bg-secondary"
-            }`}
-            style={{ width: "100%" }}
-            onClick={handleSubmitUser}
-          >
-            {!loading && <div>Login</div>}
-            {loading && (
-              <div
-                className="spinner-grow text-light"
-                style={{ width: "18px", height: "18px" }}
-                role="status"
-              ></div>
-            )}
-          </button>
-          <br />
-          <br />
-          <button
-            type="button"
-            className="btn btn-block shadow-sm"
-            style={{ width: "100%", border: "1px solid #ccc" }}
-            onClick={handleGoogleSignIn}
-          >
-            Signin with Google&nbsp;
-            <FcGoogle />
-          </button>
-          <br />
-          <br />
-          <button
-            type="button"
-            className="btn btn-block shadow-sm"
-            style={{ width: "100%", border: "1px solid #ccc" }}
-          >
-            Signin with Github&nbsp;
-            <BsGithub />
-          </button>
-        </form>
-        <br />
-        <p className="text-muted">
-          Dont have account yet?&nbsp;<Link href={"/"}>Signup</Link>
-        </p>
+        </div>
       </div>
     </>
   );

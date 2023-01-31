@@ -17,6 +17,7 @@ import {
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { getSession } from "next-auth/react";
+import { HiOutlineRefresh } from "react-icons/hi";
 
 const Users = () => {
   const usersList = useSelector(selectUsers);
@@ -54,17 +55,26 @@ const Users = () => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "left",
           alignItems: "center",
+          position: "relative",
+          maxWidth: "1100px",
+          margin: "auto",
+          padding: "10px",
+          boxSizing: "border-box",
         }}
       >
         {loadingData !== APIStatus.pending && (
-          <button className="btn btn-primary" onClick={handleRefreshData}>
-            Update Users
+          <button
+            className="btn btn-success"
+            onClick={handleRefreshData}
+            style={{ position: "absolute", right: "10px" }}
+          >
+            <HiOutlineRefresh style={{ width: "25px", height: "25px" }} />
           </button>
         )}
         <div className="p-2" style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>
+          <h1 style={{ fontSize: "30px", fontWeight: "bold" }}>
             <FormattedMessage id="page.users.title" />
           </h1>
         </div>

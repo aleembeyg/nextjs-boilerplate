@@ -95,10 +95,7 @@ function App({ Component, pageProps }: AppProps) {
                     </div>
                   </div>
                 ) : (
-                  <div
-                    className="p-3"
-                    style={{ maxWidth: "1100px", margin: "auto" }}
-                  >
+                  <div style={{ margin: "auto" }}>
                     <Component {...pageProps} />
                   </div>
                 )}

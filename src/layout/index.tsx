@@ -5,6 +5,7 @@ import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { BsCreditCard2FrontFill } from "react-icons/bs";
+import { HiUserCircle } from "react-icons/hi";
 
 type IMainProps = {
   children: ReactNode;
@@ -26,7 +27,7 @@ const Layout = (props: IMainProps) => {
   const { data: session } = useSession();
   return (
     <div className={`container-fluid ${styles.header_FC}`}>
-      <div className="bg-light">
+      <div className="bg-light fixed-top">
         <nav
           style={{ maxWidth: "1100px", margin: "auto" }}
           className="navbar navbar-expand-lg navbar-light bg-light"
@@ -52,7 +53,10 @@ const Layout = (props: IMainProps) => {
               data-bs-target="#navbarCollapse"
               style={{ border: "0 solid", fontSize: "28px", boxShadow: "none" }}
             >
-              <span className="navbar-toggler-icon" style={{ stroke: "#eee"}}></span>
+              <span
+                className="navbar-toggler-icon"
+                style={{ stroke: "#eee" }}
+              ></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="navbar-nav"></div>
@@ -113,16 +117,28 @@ const Layout = (props: IMainProps) => {
                   </button>
                 </div>
                 &nbsp;
-                <Link href={"/contact-us"} className="nav-item nav-link">
-                  <FormattedMessage id="page.home.link.contactus" />
-                </Link>
+                <li data-bs-toggle="collapse">
+                  <Link href={"/contact-us"} className="nav-item nav-link">
+                    <FormattedMessage id="page.home.link.contactus" />
+                  </Link>
+                </li>
                 &nbsp;&nbsp;
-                <Link href={"/user/users"} className="nav-item nav-link">
+                <Link
+                  href={"/user/users"}
+                  data-toggle="collapse"
+                  className="nav-item nav-link"
+                >
                   <FormattedMessage id="page.home.link.users" />
                 </Link>
                 &nbsp;&nbsp;
                 {session == null && (
-                  <Link href={"/login"} className="nav-item nav-link">
+                  <Link
+                    href={"/login"}
+                    data-toggle="collapse"
+                    className="nav-item nav-link"
+                  >
+                    <HiUserCircle style={{ height: "22px", width: "22px" }} />
+                    &nbsp;
                     <FormattedMessage id="page.home.link.login" />
                   </Link>
                 )}
@@ -148,8 +164,13 @@ const Layout = (props: IMainProps) => {
           </div>
         </nav>
       </div>
-      <div>{props.children}</div>
-      <footer className="bg-light p-3" style={{ backgroundColor: "#eee" }}>
+      <div style={{ marginTop: "86px", marginBottom: "56px", padding: "0" }}>
+        {props.children}
+      </div>
+      <footer
+        className="bg-light fixed-bottom p-3"
+        style={{ backgroundColor: "#eee" }}
+      >
         <div style={{ maxWidth: "1100px", margin: "auto" }}>
           2023 SendCredit
         </div>
