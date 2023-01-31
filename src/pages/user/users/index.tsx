@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { getSession } from "next-auth/react";
 import { HiOutlineRefresh } from "react-icons/hi";
-import Loading from "./loading";
+import Loading from "@/components/loading";
 
 const Users = () => {
   const usersList = useSelector(selectUsers);
@@ -85,7 +85,8 @@ const Users = () => {
         style={{ maxWidth: "1100px", margin: "auto", minWidth: "200px" }}
       >
         {loadingData == APIStatus.pending && <Loading />}
-        {loadingData != APIStatus.pending && usersList &&
+        {loadingData != APIStatus.pending &&
+          usersList &&
           usersList.results &&
           usersList.results.map((item: any, index: number) => (
             <div data-id={item.id} key={index} className="p-2 col-sm-3">
