@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FormattedMessage, IntlProvider } from "react-intl";
+import { FormattedMessage, IntlProvider, useIntl } from "react-intl";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
@@ -25,12 +25,6 @@ const messages = {
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle");
-    if (typeof window != undefined) {
-      const loading = document.getElementById("appLoadingWindow");
-      if (loading) {
-        loading.style.display = "none";
-      }
-    }
   }, []);
 
   const [loader, setLoader] = useState(false);
@@ -65,13 +59,15 @@ function App({ Component, pageProps }: AppProps) {
       doc.querySelector("html").setAttribute("lang", lang);
     }
   }, [router.locale]);
-
   return (
     <>
       <Head>
         <title>
           <FormattedMessage id="page.home.title" />
         </title>
+        <meta name="description" content="Send Credit" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <IntlProvider locale={localeStr} messages={Object(messages)[localeStr]}>
         <Provider store={store}>
