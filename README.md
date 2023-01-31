@@ -25,6 +25,7 @@ App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleemb
 - axios
 
 ## Main Features:
+- PWA
 - Home Page
 - Users Listing
 - Social Login with NextAuth
