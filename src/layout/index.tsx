@@ -126,15 +126,13 @@ const Layout = (props: IMainProps) => {
                   </button>
                 </div>
                 &nbsp;
-                <li>
-                  <Link
-                    href={"/contact-us"}
-                    onClick={() => setToggle(false)}
-                    className="nav-item nav-link"
-                  >
-                    <FormattedMessage id="page.home.link.contactus" />
-                  </Link>
-                </li>
+                <Link
+                  href={"/contact-us"}
+                  onClick={() => setToggle(false)}
+                  className="nav-item nav-link"
+                >
+                  <FormattedMessage id="page.home.link.contactus" />
+                </Link>
                 &nbsp;&nbsp;
                 {session == null && (
                   <Link
