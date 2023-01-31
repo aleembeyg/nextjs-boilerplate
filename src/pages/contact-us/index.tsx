@@ -5,7 +5,7 @@ const ContactUs = () => {
   return (
     <>
       <Head>
-        <title>Contact Us</title>
+        <title>SendCredit - Contact Us</title>
       </Head>
       <main style={{ margin: "auto" }}>
         <div

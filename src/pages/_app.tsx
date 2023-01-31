@@ -62,9 +62,6 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>
-          <FormattedMessage id="page.home.title" />
-        </title>
         <meta name="description" content="Send Credit" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
