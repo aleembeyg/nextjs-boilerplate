@@ -117,7 +117,7 @@ const Layout = (props: IMainProps) => {
                   </button>
                 </div>
                 &nbsp;
-                <li data-bs-toggle="collapse">
+                <li>
                   <Link href={"/contact-us"} className="nav-item nav-link">
                     <FormattedMessage id="page.home.link.contactus" />
                   </Link>

@@ -51,9 +51,9 @@ const Login = ({}: any) => {
       </Head>
       <div style={{ background: "#6A359C", height: "300px" }}></div>
       <div className="p-4" style={{ marginTop: "-250px" }}>
-        <div className="p-4">
+        <div>
           <div
-            className="card p-5 shadow-sm"
+            className="card p-4 shadow-sm"
             style={{ maxWidth: "400px", margin: "auto" }}
           >
             <form method="post" className="needs-validation">
