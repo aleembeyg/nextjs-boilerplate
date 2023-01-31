@@ -6,7 +6,7 @@ After download this project please open this project in VS Code and use this com
 App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleembeyg.vercel.app/)
 
 ## Packages Detail:
-# Stage Management Packages
+### Stage Management Packages
 - redux
 - react-redux
 - redux-saga
