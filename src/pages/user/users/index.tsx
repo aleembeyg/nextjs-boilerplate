@@ -67,6 +67,7 @@ const Users = () => {
       >
         {loadingData !== APIStatus.pending && (
           <button
+            aria-label="Refresh Users List"
             className="btn btn-success"
             onClick={handleRefreshData}
             style={{ position: "absolute", right: "10px" }}

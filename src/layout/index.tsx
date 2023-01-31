@@ -52,6 +52,7 @@ const Layout = (props: IMainProps) => {
             </h1>
             <button
               type="button"
+              aria-label="Menu Toggle Button"
               className="navbar-toggler"
               onClick={handleToggler}
               style={{ border: "0 solid", fontSize: "28px", boxShadow: "none" }}
