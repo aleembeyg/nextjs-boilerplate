@@ -47,8 +47,6 @@ const Layout = (props: IMainProps) => {
                 href={"/"}
                 style={{ display: "flex", alignItems: "center" }}
               >
-                <BsCreditCard2FrontFill style={{ width: "25px" }} />
-                &nbsp;
                 <FormattedMessage id="page.home.head.title" />
               </Link>
             </h1>
@@ -145,8 +143,6 @@ const Layout = (props: IMainProps) => {
                     className="nav-item nav-link"
                     onClick={() => setToggle(false)}
                   >
-                    <HiUserCircle style={{ height: "22px", width: "22px" }} />
-                    &nbsp;
                     <FormattedMessage id="page.home.link.login" />
                   </Link>
                 )}
@@ -157,8 +153,7 @@ const Layout = (props: IMainProps) => {
                     className="nav-item nav-link"
                     onClick={() => setToggle(false)}
                   >
-                    <HiUserCircle style={{ height: "22px", width: "22px" }} />
-                    &nbsp;Profile
+                    Profile
                   </Link>
                 )}
                 {session && (
