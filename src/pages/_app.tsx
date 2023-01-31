@@ -71,34 +71,29 @@ function App({ Component, pageProps }: AppProps) {
           <SessionProvider session={pageProps.session}>
             <ToastContainer />
             <Layout>
-              <div>
-                {loader ? (
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100vh",
-                      margin: "auto",
-                      position: "absolute",
-                      right: 0,
-                      left: 0,
-                      top: 0,
-                      zIndex: 1000,
-                      background: "rgba(0,0,0,0)",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div className="spinner-grow text-disable" role="status">
-                      <span className="sr-only"></span>
-                    </div>
+              {loader ? (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    margin: "auto",
+                    position: "absolute",
+                    right: 0,
+                    left: 0,
+                    top: 0,
+                    zIndex: 1000,
+                    background: "rgba(0,0,0,0)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="spinner-grow text-disable" role="status">
                   </div>
-                ) : (
-                  <div style={{ margin: "auto" }}>
-                    <Component {...pageProps} />
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <Component {...pageProps} />
+              )}
             </Layout>
           </SessionProvider>
         </Provider>
