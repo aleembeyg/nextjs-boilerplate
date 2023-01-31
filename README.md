@@ -11,17 +11,17 @@ App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleemb
 - react-redux
 - redux-saga
 - redux-persist
-# UI/UX
+### UI/UX
 - bootstrap
 - react-icons
-# Social Login
+### Social Login
 - next-auth
-# Notifications
+### Notifications
 - react-toastify
-# Multi Language
+### Multi Language
 - i18n
 - react-intl
-# Data Fetch
+### Data Fetch
 - axios
 
 ## Main Features:
