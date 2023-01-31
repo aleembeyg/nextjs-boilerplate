@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) boilerplate using bootstrapped. 
 
-After download this project please open this project in VS Code and use this command in terminal "npm i"
+After download, please open this project in VS Code and use this command in terminal "npm i"
 
 ## Demo
 App Demo is available on [SendCredit Demo App](https://nextjs-boilerplate-aleembeyg.vercel.app/)
