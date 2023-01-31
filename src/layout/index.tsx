@@ -123,13 +123,6 @@ const Layout = (props: IMainProps) => {
                   </Link>
                 </li>
                 &nbsp;&nbsp;
-                <Link
-                  href={"/user/users"}
-                  className="nav-item nav-link"
-                >
-                  <FormattedMessage id="page.home.link.users" />
-                </Link>
-                &nbsp;&nbsp;
                 {session == null && (
                   <Link
                     href={"/login"}

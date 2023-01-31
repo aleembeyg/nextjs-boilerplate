@@ -8,10 +8,19 @@ const fourOFour = () => {
       <Head>
         <title>SendCredit - 404 Page Not Found</title>
       </Head>
-      <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          textAlign: "center",
+          height: "500px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <h1 style={{ fontSize: "120px" }}>404</h1>
         <h5 style={{ fontSize: "25px" }}>
-          Something Missing Here...&nbsp;&nbsp;
+          <p>Something Missing Here...&nbsp;&nbsp;</p>
           <Link
             className="btn btn-dark text-white"
             style={{ width: "150px", borderRadius: "20px" }}

@@ -1,6 +1,7 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { getSession, useSession } from "next-auth/react";
+import Link from "next/link";
+import { BsArrowRight } from "react-icons/bs";
 
 const User = () => {
   const { data: session } = useSession();
@@ -10,7 +11,7 @@ const User = () => {
         <title>SendCredit - Profile</title>
       </Head>
       <main style={{ maxWidth: "1100px", margin: "auto" }}>
-        <div className="p-5" style={{ textAlign: "center" }}>
+        <div className="p-3" style={{ textAlign: "center", marginTop: "50px" }}>
           <img
             src={session?.user?.image?.toString()}
             style={{ borderRadius: "100%", marginBottom: "10px" }}
@@ -20,6 +21,21 @@ const User = () => {
           </h3>
           <p>{session?.user?.email}</p>
         </div>
+        <Link
+          className="btn btn-dark text-white"
+          style={{
+            width: "250px",
+            borderRadius: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "auto",
+          }}
+          href={"/user/users"}
+        >
+          <BsArrowRight /> &nbsp;&nbsp;
+          <p style={{ margin: 0, padding: 0 }}>Our Valued Customers</p>
+        </Link>
       </main>
     </>
   );
@@ -35,6 +51,7 @@ export async function getServerSideProps(context: any) {
     return {
       redirect: {
         destination: "/login",
+        locale: context.locale,
         permanent: false,
       },
     };
