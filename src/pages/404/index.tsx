@@ -6,7 +6,7 @@ const fourOFour = () => {
   return (
     <>
       <Head>
-        <title>SendCredit - 404 Page Not Found</title>
+        <title>MobileCredit - 404 Page Not Found</title>
       </Head>
       <div
         style={{

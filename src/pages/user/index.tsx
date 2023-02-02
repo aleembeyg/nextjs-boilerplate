@@ -8,7 +8,7 @@ const User = () => {
   return (
     <>
       <Head>
-        <title>SendCredit - Profile</title>
+        <title>MobileCredit - Profile</title>
       </Head>
       <main style={{ maxWidth: "1100px", margin: "auto" }}>
         <div className="p-3" style={{ textAlign: "center", marginTop: "50px" }}>

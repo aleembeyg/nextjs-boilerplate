@@ -47,7 +47,7 @@ const Login = ({}: any) => {
   return (
     <>
       <Head>
-        <title>SendCredit - Login</title>
+        <title>MobileCredit - Login</title>
       </Head>
       <div style={{ background: "#6A359C", height: "300px" }}></div>
       <div className="p-4" style={{ marginTop: "-250px" }}>
