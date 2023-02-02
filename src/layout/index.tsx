@@ -42,12 +42,19 @@ const Layout = (props: IMainProps) => {
           <div className="container-fluid">
             <h1
               className="navbar-brand p-3"
-              style={{ fontSize: "25px", fontWeight: "bold" }}
+              style={{ fontSize: "22px", fontWeight: "bold" }}
             >
               <Link
                 href={"/"}
                 style={{ display: "flex", alignItems: "center" }}
               >
+                <Image
+                  src={"/images/logo.png"}
+                  alt="logo"
+                  width={30}
+                  height={30}
+
+                />&nbsp;
                 <FormattedMessage id="page.home.head.title" />
               </Link>
             </h1>
