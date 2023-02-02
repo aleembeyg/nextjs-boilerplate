@@ -1,11 +1,11 @@
 {
-  "theme_color": "#6A359C",
-  "background_color": "#6A359C",
+  "theme_color": "#7B3F00",
+  "background_color": "#7B3F00",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Send Credit",
-  "short_name": "Send Credit",
+  "name": "Mobile Credit",
+  "short_name": "Mobile Credit",
   "icons": [
     {
       "src": "/maskable_icon.png",

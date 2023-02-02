@@ -193,7 +193,7 @@ const Layout = (props: IMainProps) => {
         style={{ backgroundColor: "#eee" }}
       >
         <div style={{ maxWidth: "1100px", margin: "auto" }}>
-          2023 SendCredit
+          2023 MobileCredit
         </div>
       </footer>
     </div>

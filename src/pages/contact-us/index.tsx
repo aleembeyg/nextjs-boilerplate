@@ -5,12 +5,12 @@ const ContactUs = () => {
   return (
     <>
       <Head>
-        <title>SendCredit - Contact Us</title>
+        <title>MobileCredit - Contact Us</title>
       </Head>
       <main style={{ margin: "auto" }}>
         <div
           style={{
-            background: "#6A359C",
+            background: "#fff",
             height: "300px",
             padding: "0px 20px",
             display: "flex",
@@ -27,7 +27,7 @@ const ContactUs = () => {
               fontSize: "40px",
             }}
           >
-            Worldwide mobile recharge: send credit and data to any phone
+            Worldwide mobile recharge: Mobile credit and data to any phone
           </h1>
         </div>
         <div className="p-4" style={{ marginTop: "-130px" }}>
