@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { BsCreditCard2FrontFill } from "react-icons/bs";
 import { HiUserCircle } from "react-icons/hi";
+import Image from "next/image";
 
 type IMainProps = {
   children: ReactNode;
@@ -178,7 +179,13 @@ const Layout = (props: IMainProps) => {
           </div>
         </nav>
       </div>
-      <div style={{ marginTop: "86px", marginBottom: "56px", padding: "0" }}>
+      <div
+        style={{
+          marginTop: "86px",
+          marginBottom: "56px",
+          padding: "0",
+        }}
+      >
         {props.children}
       </div>
       <footer

@@ -23,7 +23,6 @@ export default function Home() {
       <main>
         <div
           style={{
-            background: "#6A359C",
             height: "300px",
             padding: "0px 20px",
             display: "flex",

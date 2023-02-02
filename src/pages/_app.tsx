@@ -4,17 +4,17 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FormattedMessage, IntlProvider, useIntl } from "react-intl";
+import { IntlProvider } from "react-intl";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
 import Layout from "../layout";
-import { persistor, store, wrapper } from "@/redux/store";
+import { store, wrapper } from "@/redux/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import Image from "next/image";
 
 const messages = {
   ar,
@@ -75,7 +75,7 @@ function App({ Component, pageProps }: AppProps) {
                 <div
                   style={{
                     width: "100%",
-                    height: "100vh",
+                    height: "100%",
                     margin: "auto",
                     position: "absolute",
                     right: 0,
@@ -88,11 +88,30 @@ function App({ Component, pageProps }: AppProps) {
                     alignItems: "center",
                   }}
                 >
-                  <div className="spinner-grow text-disable" role="status">
-                  </div>
+                  <div
+                    className="spinner-grow text-disable"
+                    role="status"
+                  ></div>
                 </div>
               ) : (
-                <Component {...pageProps} />
+                <div style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      background:
+                        "#6A359C url(/images/how-to-buy-banner.jpg) 0 0 no-repeat",
+                      backgroundAttachment: "scroll",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "300px",
+                      top: 0,
+                      width: "100%",
+                      backfaceVisibility: "hidden"
+                    }}
+                  >
+                  </div>
+                  <Component {...pageProps} />
+                </div>
               )}
             </Layout>
           </SessionProvider>
