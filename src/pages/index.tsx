@@ -1,7 +1,8 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
+import { Inter, Padyakke_Expanded_One } from "@next/font/google";
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
+import Topup from "@/components/topup";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -53,6 +54,7 @@ export default function Home() {
             <p>
               <FormattedMessage id="page.home.description" />
             </p>
+            <Topup />
           </div>
         </div>
       </main>

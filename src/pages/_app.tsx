@@ -14,7 +14,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import Image from "next/image";
 
 const messages = {
   ar,
