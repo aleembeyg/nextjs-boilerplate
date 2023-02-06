@@ -7,39 +7,16 @@ const ContactUs = () => {
       <Head>
         <title>MobileCredit - Contact Us</title>
       </Head>
-      <main style={{ margin: "auto" }}>
-        <div
-          style={{
-            background: "#fff",
-            height: "300px",
-            padding: "0px 20px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <h1
-            style={{
-              color: "#fff",
-              maxWidth: "600px",
-              margin: "auto",
-              marginTop: "20px",
-              paddingRight: "20px",
-              fontSize: "40px",
-            }}
-          >
-            Worldwide mobile recharge: Mobile credit and data to any phone
-          </h1>
-        </div>
-        <div className="p-4" style={{ marginTop: "-130px" }}>
+     
+        <div className="p-4">
           <div
             className="card p-5 shadow"
-            style={{ textAlign: "center", maxWidth: "600px", margin: "auto" }}
+            style={{ textAlign: "center", maxWidth: "600px", margin: "auto", marginTop: "180px" }}
           >
             <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>Contact Us</h1>
             <p>Stay Tuned With Us For More Updates</p>
           </div>
         </div>
-      </main>
     </>
   );
 };

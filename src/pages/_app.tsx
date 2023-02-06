@@ -99,14 +99,15 @@ function App({ Component, pageProps }: AppProps) {
                     style={{
                       position: "absolute",
                       background:
-                        "#6A359C url(/images/how-to-buy-banner.jpg) 0 0 no-repeat",
+                        "#fff url(/images/how-to-buy-banner.jpg) 0 0 no-repeat",
                       backgroundAttachment: "scroll",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       height: "300px",
                       top: 0,
                       width: "100%",
-                      backfaceVisibility: "hidden"
+                      backfaceVisibility: "hidden",
+                      zIndex: "-1"
                     }}
                   >
                   </div>

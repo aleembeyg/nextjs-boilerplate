@@ -49,9 +49,8 @@ const Login = ({}: any) => {
       <Head>
         <title>MobileCredit - Login</title>
       </Head>
-      <div style={{ background: "#6A359C", height: "300px" }}></div>
-      <div className="p-4" style={{ marginTop: "-250px" }}>
-        <div>
+      <div className="p-4">
+        <div  style={{ marginTop: "100px" }}>
           <div
             className="card p-4 shadow-sm"
             style={{ maxWidth: "400px", margin: "auto" }}

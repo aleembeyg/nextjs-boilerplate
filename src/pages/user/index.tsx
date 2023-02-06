@@ -2,6 +2,7 @@ import Head from "next/head";
 import { getSession, useSession } from "next-auth/react";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
+import Image from "next/image";
 
 const User = () => {
   const { data: session } = useSession();
@@ -11,32 +12,46 @@ const User = () => {
         <title>MobileCredit - Profile</title>
       </Head>
       <main style={{ maxWidth: "1100px", margin: "auto" }}>
-        <div className="p-3" style={{ textAlign: "center", marginTop: "50px" }}>
-          <img
-            src={session?.user?.image?.toString()}
-            style={{ borderRadius: "100%", marginBottom: "10px" }}
-          />
-          <h3 style={{ fontSize: "35px", fontWeight: "bold" }}>
-            {session?.user?.name}
-          </h3>
-          <p>{session?.user?.email}</p>
-        </div>
-        <Link
-          className="btn btn-dark text-white"
-          style={{
-            width: "250px",
-            borderRadius: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "auto",
-          }}
-          href={"/user/users"}
+        <div
+          className="card p-3 shadow"
+          style={{ maxWidth: "550px", margin: "auto", top: "120px" }}
         >
-          <p style={{ margin: 0, padding: 0 }}>Our Valued Customers</p>
-          &nbsp;&nbsp;
-          <BsArrowRight />
-        </Link>
+          <div className="p-3" style={{ textAlign: "center" }}>
+            {session?.user?.image && (
+              <Image
+                src={session?.user?.image?.toString()}
+                alt=""
+                width={100}
+                height={100}
+                style={{ borderRadius: "100%", marginBottom: "10px" }}
+              />
+            )}
+            <h3
+              className="text-dark"
+              style={{ fontSize: "35px", fontWeight: "bold" }}
+            >
+              {session?.user?.name}
+            </h3>
+            <p className="text-dark">{session?.user?.email}</p>
+          </div>
+          <Link
+            className="btn btn-dark text-light"
+            style={{
+              width: "250px",
+              borderRadius: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "auto",
+              marginBottom: "20px",
+            }}
+            href={"/user/users"}
+          >
+            <p style={{ margin: 0, padding: 0 }}>Our Valued Customers</p>
+            &nbsp;&nbsp;
+            <BsArrowRight />
+          </Link>
+        </div>
       </main>
     </>
   );

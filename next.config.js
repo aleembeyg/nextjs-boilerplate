@@ -18,6 +18,9 @@ const nextConfig = withPWA({
     defaultLocale: "en",
     localeDetection: false,
   },
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
 });
 
 module.exports = nextConfig;
