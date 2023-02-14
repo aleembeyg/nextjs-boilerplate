@@ -6,6 +6,10 @@ h2.title {
   padding-right: 20px;
   font-size: 35px;
 }
+.logoIcon {
+    width: 100px;
+    margin: 10px auto;
+}
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 899px) {

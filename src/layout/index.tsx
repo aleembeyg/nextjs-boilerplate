@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import { Container, Drawer, IconButton } from "@mui/material";
+import { Button, Container, Drawer, IconButton } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
@@ -12,6 +12,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { IoMdMenu } from "react-icons/io";
 import styles from "./index.module.css";
+import { indigo } from "@mui/material/colors";
 
 type IMainProps = {
   children: ReactNode;
@@ -55,7 +56,17 @@ const Layout = (props: IMainProps) => {
     <Container disableGutters maxWidth={false}>
       <AppBar color="inherit">
         <Toolbar disableGutters className="fixed-width-panel header-panel">
-          <Link href={"/"} className="logo-panel bold-text">
+          <Link
+            href={"/"}
+            className="logo-panel bold-text"
+            style={{
+              textAlign: "center",
+              background: "indigo",
+              color: "#fff",
+              borderRadius: "5px",
+              padding: "10px"
+            }}
+          >
             <FormattedMessage id="page.home.head.title" />
           </Link>
           <List className="nav-bar-menu-list">
@@ -166,66 +177,100 @@ const Layout = (props: IMainProps) => {
         </Toolbar>
       </AppBar>
       <Drawer open={toggle}>
-        <List className="nav-bar-menu-list-mobile">
-          <ListItem>
-            <button
-              role="button"
-              style={{
-                cursor: "pointer",
-                border: 0,
-                background: "none",
-                color: "#333",
-              }}
-              className="nav-item nav-link"
-              onClick={() => {
-                setToggle(false);
-                handleChangeLanguage("en");
-              }}
-            >
-              EN
-            </button>
-          </ListItem>
-          <ListItem disableGutters>
-            <Divider />
-          </ListItem>
-          <ListItem>
-            <button
-              role="button"
-              style={{
-                cursor: "pointer",
-                border: 0,
-                background: "none",
-                color: "#333",
-              }}
-              className="nav-item nav-link"
-              onClick={() => {
-                setToggle(false);
-                handleChangeLanguage("fr");
-              }}
-            >
-              FR
-            </button>
-          </ListItem>
-          <ListItem disableGutters>
-            <Divider />
-          </ListItem>
-          <ListItem>
-            <button
-              role="button"
-              style={{
-                cursor: "pointer",
-                border: 0,
-                background: "none",
-                color: "#333",
-              }}
-              className="nav-item nav-link"
-              onClick={() => {
-                setToggle(false);
-                handleChangeLanguage("ar");
-              }}
-            >
-              AR
-            </button>
+        <Button
+          size="small"
+          aria-label="close menu button"
+          onClick={() => setToggle(false)}
+          style={{ fontSize: "20px", color: "#000", textAlign: "right" }}
+          variant="text"
+        >
+          X
+        </Button>
+        <p
+          style={{
+            fontSize: "25px",
+            textAlign: "center",
+            background: "indigo",
+            maxWidth: "250px",
+            color: "#fff",
+            margin: "20px auto 0px auto",
+            borderRadius: "5px",
+            padding: "10px"
+          }}
+        >
+          TalkHome
+        </p>
+        <List
+          className="nav-bar-menu-list-mobile"
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "30px",
+          }}
+        >
+          <ListItem disableGutters disablePadding>
+            <List sx={{ display: "flex" }} disablePadding>
+              <ListItem>
+                <button
+                  role="button"
+                  style={{
+                    cursor: "pointer",
+                    border: 0,
+                    background: "none",
+                    color: "#333",
+                  }}
+                  className="nav-item nav-link"
+                  onClick={() => {
+                    setToggle(false);
+                    handleChangeLanguage("en");
+                  }}
+                >
+                  EN
+                </button>
+              </ListItem>
+              <ListItem disableGutters>
+                <Divider />
+              </ListItem>
+              <ListItem>
+                <button
+                  role="button"
+                  style={{
+                    cursor: "pointer",
+                    border: 0,
+                    background: "none",
+                    color: "#333",
+                  }}
+                  className="nav-item nav-link"
+                  onClick={() => {
+                    setToggle(false);
+                    handleChangeLanguage("fr");
+                  }}
+                >
+                  FR
+                </button>
+              </ListItem>
+              <ListItem disableGutters>
+                <Divider />
+              </ListItem>
+              <ListItem>
+                <button
+                  role="button"
+                  style={{
+                    cursor: "pointer",
+                    border: 0,
+                    background: "none",
+                    color: "#333",
+                  }}
+                  className="nav-item nav-link"
+                  onClick={() => {
+                    setToggle(false);
+                    handleChangeLanguage("ar");
+                  }}
+                >
+                  AR
+                </button>
+              </ListItem>
+            </List>
           </ListItem>
           <ListItem>
             <Link

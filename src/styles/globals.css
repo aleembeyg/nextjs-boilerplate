@@ -131,8 +131,11 @@ h1.heading {
     opacity: 0;
   }
 }
-.MuiCircularProgress-circle  {
+.MuiCircularProgress-circle {
   color: #fff;
+}
+.MuiDrawer-paper {
+  width: 100%;
 }
 @media only screen and (max-width: 1024px) {
 }
