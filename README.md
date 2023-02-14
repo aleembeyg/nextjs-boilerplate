@@ -12,7 +12,7 @@ App Demo is available on [TalkHome Demo App](https://nextjs-boilerplate-aleembey
 - redux-saga
 - redux-persist
 ### UI/UX
-- bootstrap
+- Material UI
 - react-icons
 ### Social Login
 - next-auth
