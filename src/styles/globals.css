@@ -1,4 +1,152 @@
-a {
-  color: #333 !important;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  font: 100% "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
   text-decoration: none;
+  color: #222;
+}
+.bold-text {
+  font-weight: 600;
+  font-size: 20px;
+}
+h1.heading {
+  font-size: 35px;
+  font-weight: 600;
+}
+.logo-panel {
+  display: flex;
+  align-items: center;
+}
+.menu-button-size {
+  font-size: 40px;
+}
+.main-container {
+  margin-top: 76px;
+  min-width: 280px;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.fixed-panel {
+  position: fixed;
+}
+.fixed-width-panel {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+.nav-bar-menu-list,
+.nav-bar-menu-list-mobile {
+  display: flex;
+}
+.nav-bar-menu-list-mobile {
+  flex-direction: column;
+}
+.footer-panel {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #eee;
+  font-size: 14px;
+}
+.header-panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+.MuiListItem-root {
+  display: block;
+  width: auto !important;
+}
+.MuiDivider-root {
+  height: 100% !important;
+  border-width: 1px !important;
+}
+.MuiAppBar-root {
+  box-shadow: none;
+}
+/* page loading icon */
+.loading-page-bg {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1000000;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 5px solid indigo;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+.MuiCircularProgress-circle  {
+  color: #fff;
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 899px) {
+  .nav-bar-menu-list {
+    display: none;
+  }
+  .main-container {
+    margin-top: 76px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  h1.heading {
+    font-size: 25px;
+    font-weight: 600;
+  }
 }

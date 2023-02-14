@@ -1,11 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import {
+  Button,
+  Card,
+  CircularProgress,
+  FormLabel,
+  Input,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import FormControlUnstyled from "@mui/base/FormControlUnstyled";
+import styles from "./index.module.css";
+import { fontSize } from "@mui/system";
+
 const Login = ({}: any) => {
   const router = useRouter();
   const [userName, setUserName] = useState("");
@@ -49,91 +62,102 @@ const Login = ({}: any) => {
       <Head>
         <title>MobileCredit - Login</title>
       </Head>
-      <div className="p-4">
-        <div  style={{ marginTop: "100px" }}>
-          <div
-            className="card p-4 shadow-sm"
-            style={{ maxWidth: "400px", margin: "auto" }}
+      <section className={styles.loginSection}>
+        <div className={`fixed-width-panel ${styles.cardPanel}`}>
+          <div className={styles.left}>
+            <h1>Welcome Back !</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+          </div>
+          <FormControlUnstyled
+            className={styles.right}
+            defaultValue=""
+            required
           >
-            <form method="post" className="needs-validation">
-              <div className="form-group">
-                <p>{loading}</p>
-                <label htmlFor="exampleInputEmail1">Email address</label>
-                <input
-                  value={userName}
-                  type="email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  onChange={(e) => setUserName(e.target.value)}
-                  required
-                />
-                <small id="emailHelp" className="form-text text-muted">
-                  Well never share your email with anyone else.
-                </small>
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
-                <input
-                  value={password}
-                  type="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
+            <form method="post">
+              <TextField
+                fullWidth
+                variant="outlined"
+                label="Email"
+                value={userName}
+                type="email"
+                size="small"
+                aria-describedby="emailHelp"
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <p className={styles.helpText}>
+                Well never share your email with anyone else.
+              </p>
+              <TextField
+                fullWidth
+                variant="outlined"
+                value={password}
+                label="Password"
+                type="password"
+                size="small"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <br />
-              <button
-                type="button"
-                className={`btn btn-block text-white ${
-                  validate ? "bg-success" : "bg-secondary"
-                }`}
-                style={{ width: "100%" }}
+              <br />
+              <Button
+                variant="contained"
+                color="success"
+                fullWidth
                 onClick={handleSubmitUser}
               >
-                {!loading && <div>Login</div>}
+                {!loading && <>Login</>}
                 {loading && (
-                  <div
-                    className="spinner-grow text-light"
-                    style={{ width: "18px", height: "18px" }}
-                    role="status"
-                  ></div>
+                  <CircularProgress size={25} style={{ color: "white" }} />
                 )}
-              </button>
+              </Button>
               <br />
               <br />
-              <button
-                type="button"
-                className="btn btn-block shadow-sm"
-                style={{ width: "100%", border: "1px solid #ccc" }}
+              <br />
+              <Button
+                variant="outlined"
+                color="inherit"
+                fullWidth
                 onClick={handleGoogleSignIn}
               >
                 Signin with Google&nbsp;
                 <FcGoogle />
-              </button>
+              </Button>
               <br />
               <br />
-              <button
-                type="button"
-                className="btn btn-block shadow-sm"
-                style={{ width: "100%", border: "1px solid #ccc" }}
-              >
+              <Button variant="outlined" color="inherit" fullWidth>
                 Signin with Github&nbsp;
                 <BsGithub />
-              </button>
+              </Button>
             </form>
             <br />
-            <p className="text-muted">
-              Dont have account yet?&nbsp;<Link href={"/"}>Signup</Link>
+            <p style={{ fontSize: "14px" }}>
+              Dont have account yet?&nbsp;
+              <Link className={styles.link} href={"/"}>
+                Signup
+              </Link>
             </p>
-          </div>
+          </FormControlUnstyled>
         </div>
-      </div>
+      </section>
     </>
   );
 };
 
 export default Login;
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+  if (session) {
+    return {
+      props: { session },
+      redirect: {
+        destination: "/user",
+        locale: context.locale,
+        permanent: false,
+      },
+    };
+  } else {
+    return { props: {} };
+  }
+}

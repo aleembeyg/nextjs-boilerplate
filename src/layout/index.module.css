@@ -1,0 +1,22 @@
+h2.title {
+  color: #fff;
+  max-width: 550px;
+  margin: auto;
+  margin-top: 20px;
+  padding-right: 20px;
+  font-size: 35px;
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 899px) {
+}
+@media only screen and (max-width: 640px) {
+    h2.title {
+      font-size: 27px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    h2.title {
+      font-size: 24px;
+    }
+}

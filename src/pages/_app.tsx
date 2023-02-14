@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -14,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const messages = {
   ar,
@@ -22,10 +23,6 @@ const messages = {
 };
 
 function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle");
-  }, []);
-
   const [loader, setLoader] = useState(false);
   const { locale } = useRouter();
   const router = useRouter();
@@ -61,7 +58,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <meta name="description" content="Mobile Credit" />
+        <meta name="description" content="TalkHome" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -71,45 +68,16 @@ function App({ Component, pageProps }: AppProps) {
             <ToastContainer />
             <Layout>
               {loader ? (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    margin: "auto",
-                    position: "absolute",
-                    right: 0,
-                    left: 0,
-                    top: 0,
-                    zIndex: 1000,
-                    background: "rgba(0,0,0,0)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    className="spinner-grow text-disable"
-                    role="status"
-                  ></div>
+                <div className="loading-page-bg">
+                  <Box sx={{ display: "flex" }}>
+                    <div className="lds-ripple">
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </Box>
                 </div>
               ) : (
                 <div style={{ position: "relative" }}>
-                  <div
-                    style={{
-                      position: "absolute",
-                      background:
-                        "#fff url(/images/how-to-buy-banner.jpg) 0 0 no-repeat",
-                      backgroundAttachment: "scroll",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      height: "300px",
-                      top: 0,
-                      width: "100%",
-                      backfaceVisibility: "hidden",
-                      zIndex: "-1"
-                    }}
-                  >
-                  </div>
                   <Component {...pageProps} />
                 </div>
               )}

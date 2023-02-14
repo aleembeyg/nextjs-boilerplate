@@ -1,4 +1,3 @@
-import Styles from "@/styles/generic.module.css";
 import { useState } from "react";
 const Topup = () => {
   const [showPanel, setShowPanel] = useState(false);
@@ -6,9 +5,9 @@ const Topup = () => {
     setShowPanel(false);
   };
   return (
-    <div className={Styles.mobileTopup}>
-      <div className={Styles.mtpContent}>
-        <div className={Styles.flagPanel} onClick={handleShowFlag}>
+    <div>
+      <div>
+        <div onClick={handleShowFlag}>
           <svg width="32" height="32" viewBox="0 0 20 20">
             <path
               fill="#3B3D58"
@@ -34,10 +33,10 @@ const Topup = () => {
             ></path>
           </svg>
         </div>
-        <div className={Styles.inputBox}>
+        <div>
           <input />
         </div>
-        {showPanel && <div className={Styles.autofill}></div>}
+        {showPanel && <div></div>}
       </div>
     </div>
   );

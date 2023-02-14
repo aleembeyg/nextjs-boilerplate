@@ -1,5 +1,6 @@
+import { Card } from "@mui/material";
 import Head from "next/head";
-import Image from "next/image";
+import styles from "./index.module.css";
 
 const ContactUs = () => {
   return (
@@ -7,16 +8,12 @@ const ContactUs = () => {
       <Head>
         <title>MobileCredit - Contact Us</title>
       </Head>
-     
-        <div className="p-4">
-          <div
-            className="card p-5 shadow"
-            style={{ textAlign: "center", maxWidth: "600px", margin: "auto", marginTop: "180px" }}
-          >
-            <h1 style={{ fontSize: "35px", fontWeight: "bold" }}>Contact Us</h1>
-            <p>Stay Tuned With Us For More Updates</p>
-          </div>
-        </div>
+      <section className={styles.contactSection}>
+        <Card className={styles.cardPanel} sx={{ boxShadow: 3 }}>
+          <h1 className="heading">Contact Us</h1>
+          <h3>Stay Tuned With Us For More Updates</h3>
+        </Card>
+      </section>
     </>
   );
 };

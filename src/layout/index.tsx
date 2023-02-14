@@ -1,12 +1,17 @@
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
-import { BsCreditCard2FrontFill } from "react-icons/bs";
-import { HiUserCircle } from "react-icons/hi";
 import Image from "next/image";
+import { Container, Drawer, IconButton } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { IoMdMenu } from "react-icons/io";
+import styles from "./index.module.css";
 
 type IMainProps = {
   children: ReactNode;
@@ -15,13 +20,10 @@ type IMainProps = {
 const Layout = (props: IMainProps) => {
   const router = useRouter();
   const [toggle, setToggle] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
 
   const handleChangeLanguage = (lang: any) => {
     router.push(router.basePath, router.asPath, { locale: lang });
-  };
-
-  const handleToggler = () => {
-    setToggle(!toggle);
   };
 
   const handleLogout = () => {
@@ -31,58 +33,37 @@ const Layout = (props: IMainProps) => {
         "/login",
     });
   };
+
+  useEffect(() => {
+    const handleRouteChangeComplete = (url: any) => {
+      if (url.indexOf("login") !== -1 || url.indexOf("user") !== -1) {
+        setHideHeader(true);
+      } else {
+        setHideHeader(false);
+      }
+    };
+    handleRouteChangeComplete(router.pathname);
+    router.events.on("routeChangeComplete", handleRouteChangeComplete);
+    // When the component unmounts, unsubscribe from the router events with the `off` method
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChangeComplete);
+    };
+  }, [router]);
+
   const { data: session } = useSession();
   return (
-    <div className={`container-fluid ${styles.header_FC}`}>
-      <div className="bg-light fixed-top">
-        <nav
-          style={{ maxWidth: "1100px", margin: "auto" }}
-          className="navbar navbar-expand-lg navbar-light bg-light"
-        >
-          <div className="container-fluid">
-            <h1
-              className="navbar-brand p-3"
-              style={{ fontSize: "22px", fontWeight: "bold" }}
-            >
-              <Link
-                href={"/"}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Image
-                  src={"/images/logo.png"}
-                  alt="logo"
-                  width={30}
-                  height={30}
-
-                />&nbsp;
-                <FormattedMessage id="page.home.head.title" />
-              </Link>
-            </h1>
-            <button
-              type="button"
-              aria-label="Menu Toggle Button"
-              className="navbar-toggler"
-              onClick={handleToggler}
-              style={{ border: "0 solid", fontSize: "28px", boxShadow: "none" }}
-            >
-              <span
-                className="navbar-toggler-icon"
-                style={{ stroke: "#eee" }}
-              ></span>
-            </button>
-            <div
-              className={`collapse navbar-collapse${toggle ? " show" : ""}`}
-              id="navbarCollapse"
-            >
-              <div className="navbar-nav"></div>
-              <div className="navbar-nav ms-auto">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                    alignItems: "center",
-                  }}
-                >
+    <Container disableGutters maxWidth={false}>
+      <AppBar color="inherit">
+        <Toolbar disableGutters className="fixed-width-panel header-panel">
+          <Link href={"/"} className="logo-panel bold-text">
+            <Image src={"/images/logo.png"} alt="logo" width={30} height={30} />
+            &nbsp;
+            <FormattedMessage id="page.home.head.title" />
+          </Link>
+          <List className="nav-bar-menu-list">
+            <ListItem disableGutters disablePadding>
+              <List className="nav-bar-menu-list" disablePadding>
+                <ListItem>
                   <button
                     role="button"
                     style={{
@@ -98,8 +79,12 @@ const Layout = (props: IMainProps) => {
                     }}
                   >
                     EN
-                  </button>{" "}
-                  |{" "}
+                  </button>
+                </ListItem>
+                <ListItem disableGutters>
+                  <Divider />
+                </ListItem>
+                <ListItem>
                   <button
                     role="button"
                     style={{
@@ -115,8 +100,12 @@ const Layout = (props: IMainProps) => {
                     }}
                   >
                     FR
-                  </button>{" "}
-                  |{" "}
+                  </button>
+                </ListItem>
+                <ListItem disableGutters>
+                  <Divider />
+                </ListItem>
+                <ListItem>
                   <button
                     role="button"
                     style={{
@@ -133,77 +122,160 @@ const Layout = (props: IMainProps) => {
                   >
                     AR
                   </button>
-                </div>
-                &nbsp;
+                </ListItem>
+              </List>
+            </ListItem>
+            <ListItem>
+              <Link
+                href={"/contact-us"}
+                onClick={() => setToggle(false)}
+                className="nav-item nav-link"
+              >
+                <FormattedMessage id="page.home.link.contactus" />
+              </Link>
+            </ListItem>
+            {session == null && (
+              <ListItem>
                 <Link
-                  href={"/contact-us"}
-                  onClick={() => setToggle(false)}
+                  href={"/login"}
+                  data-toggle="collapse"
                   className="nav-item nav-link"
                 >
-                  <FormattedMessage id="page.home.link.contactus" />
+                  <FormattedMessage id="page.home.link.login" />
                 </Link>
-                &nbsp;&nbsp;
-                {session == null && (
-                  <Link
-                    href={"/login"}
-                    data-toggle="collapse"
-                    className="nav-item nav-link"
-                    onClick={() => setToggle(false)}
-                  >
-                    <FormattedMessage id="page.home.link.login" />
-                  </Link>
-                )}
-                {session && (
-                  <Link
-                    href={"/user"}
-                    data-toggle="collapse"
-                    className="nav-item nav-link"
-                    onClick={() => setToggle(false)}
-                  >
-                    Profile
-                  </Link>
-                )}
-                {session && (
-                  <button
-                    role="button"
-                    style={{
-                      cursor: "pointer",
-                      border: 0,
-                      background: "none",
-                      color: "#333",
-                    }}
-                    className="nav-item nav-link"
-                    onClick={() => {
-                      setToggle(false);
-                      handleLogout();
-                    }}
-                  >
-                    Logout
-                  </button>
-                )}
-              </div>
-            </div>
+              </ListItem>
+            )}
+            {session && (
+              <ListItem>
+                <Link
+                  href={"/"}
+                  data-toggle="collapse"
+                  className="nav-item nav-link"
+                  onClick={() => handleLogout()}
+                >
+                  <FormattedMessage id="page.home.link.logout" />
+                </Link>
+              </ListItem>
+            )}
+          </List>
+          <IconButton
+            onClick={() => setToggle(true)}
+            sx={{ display: { md: "none" } }}
+          >
+            <IoMdMenu className="menu-button-size" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer open={toggle}>
+        <List className="nav-bar-menu-list-mobile">
+          <ListItem>
+            <button
+              role="button"
+              style={{
+                cursor: "pointer",
+                border: 0,
+                background: "none",
+                color: "#333",
+              }}
+              className="nav-item nav-link"
+              onClick={() => {
+                setToggle(false);
+                handleChangeLanguage("en");
+              }}
+            >
+              EN
+            </button>
+          </ListItem>
+          <ListItem disableGutters>
+            <Divider />
+          </ListItem>
+          <ListItem>
+            <button
+              role="button"
+              style={{
+                cursor: "pointer",
+                border: 0,
+                background: "none",
+                color: "#333",
+              }}
+              className="nav-item nav-link"
+              onClick={() => {
+                setToggle(false);
+                handleChangeLanguage("fr");
+              }}
+            >
+              FR
+            </button>
+          </ListItem>
+          <ListItem disableGutters>
+            <Divider />
+          </ListItem>
+          <ListItem>
+            <button
+              role="button"
+              style={{
+                cursor: "pointer",
+                border: 0,
+                background: "none",
+                color: "#333",
+              }}
+              className="nav-item nav-link"
+              onClick={() => {
+                setToggle(false);
+                handleChangeLanguage("ar");
+              }}
+            >
+              AR
+            </button>
+          </ListItem>
+          <ListItem>
+            <Link
+              href={"/contact-us"}
+              onClick={() => setToggle(false)}
+              className="nav-item nav-link"
+            >
+              <FormattedMessage id="page.home.link.contactus" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            {session == null && (
+              <Link
+                href={"/login"}
+                data-toggle="collapse"
+                className="nav-item nav-link"
+                onClick={() => setToggle(false)}
+              >
+                <FormattedMessage id="page.home.link.login" />
+              </Link>
+            )}
+          </ListItem>
+        </List>
+      </Drawer>
+      <div className="main-container">
+        {!hideHeader && (
+          <div
+            style={{
+              height: "300px",
+              padding: "0px 20px",
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "#4c0380",
+            }}
+          >
+            <h2 className={styles.title}>
+              Switch To <br />
+              Rechargeable Calling Cards
+              <br />
+              Click to buy and we&apos;ll send your PIN
+            </h2>
           </div>
-        </nav>
-      </div>
-      <div
-        style={{
-          marginTop: "86px",
-          marginBottom: "56px",
-          padding: "0",
-        }}
-      >
+        )}
         {props.children}
       </div>
-      <footer
-        className="bg-light fixed-bottom p-3"
-        style={{ backgroundColor: "#eee" }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "auto" }}>
-          2023 MobileCredit
-        </div>
+      <footer className="footer-panel">
+        <div className="fixed-width-panel">2023 TalkHome Mobile</div>
       </footer>
-    </div>
+    </Container>
   );
 };
 

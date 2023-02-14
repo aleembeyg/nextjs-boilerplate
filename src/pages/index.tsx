@@ -1,9 +1,9 @@
+import styles from "./home.module.css";
 import Head from "next/head";
-import { Inter, Padyakke_Expanded_One } from "@next/font/google";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
 import Topup from "@/components/topup";
-const inter = Inter({ subsets: ["latin"] });
+import { Card } from "@mui/material";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function Home() {
   const { locales } = useRouter();
@@ -21,43 +21,16 @@ export default function Home() {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <main>
-        <div
-          style={{
-            height: "300px",
-            padding: "0px 20px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <h1
-            style={{
-              color: "#fff",
-              maxWidth: "600px",
-              margin: "auto",
-              marginTop: "20px",
-              paddingRight: "20px",
-              fontSize: "40px",
-            }}
-          >
-            Worldwide mobile recharge: send credit and data to any phone
+      <section className={styles.homeSection}>
+        <Card className={styles.cardPanel} sx={{ boxShadow: 3 }}>
+          <h1 className="heading">
+            <FormattedMessage id="page.home.title" />
           </h1>
-        </div>
-        <div className="p-4" style={{ marginTop: "-130px" }}>
-          <div
-            className="card p-5 shadow-sm"
-            style={{ textAlign: "center", maxWidth: "600px", margin: "auto" }}
-          >
-            <h2 style={{ fontSize: "35px", fontWeight: "bold" }}>
-              <FormattedMessage id="page.home.title" />
-            </h2>
-            <p>
-              <FormattedMessage id="page.home.description" />
-            </p>
-            <Topup />
-          </div>
-        </div>
-      </main>
+          <h3>
+            <FormattedMessage id="page.home.description" />
+          </h3>
+        </Card>
+      </section>
     </>
   );
 }
