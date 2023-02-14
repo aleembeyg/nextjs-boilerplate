@@ -16,7 +16,7 @@
   box-shadow: 0px 0px 5px #ddd;
 }
 .loginSection .cardPanel .left {
-  background-color: rgba(76, 3, 128, 0.8);
+  background-color: indigo;
   display: flex;
   justify-content: center;
   align-items: center;
