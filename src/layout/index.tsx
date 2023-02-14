@@ -56,8 +56,6 @@ const Layout = (props: IMainProps) => {
       <AppBar color="inherit">
         <Toolbar disableGutters className="fixed-width-panel header-panel">
           <Link href={"/"} className="logo-panel bold-text">
-            <Image src={"/images/logo.png"} alt="logo" width={30} height={30} />
-            &nbsp;
             <FormattedMessage id="page.home.head.title" />
           </Link>
           <List className="nav-bar-menu-list">
@@ -159,6 +157,7 @@ const Layout = (props: IMainProps) => {
             )}
           </List>
           <IconButton
+            role={"button"}
             onClick={() => setToggle(true)}
             sx={{ display: { md: "none" } }}
           >
