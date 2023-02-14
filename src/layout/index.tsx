@@ -157,7 +157,7 @@ const Layout = (props: IMainProps) => {
             )}
           </List>
           <IconButton
-            role={"button"}
+            aria-label="Menu Button"
             onClick={() => setToggle(true)}
             sx={{ display: { md: "none" } }}
           >
