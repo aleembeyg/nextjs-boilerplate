@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) boilerplate using bootstrapped. 
+This is a [Next.js](https://nextjs.org/) boilerplate with Material UI. 
 
 After download, please open this project in VS Code and use this command in terminal "npm i"
 
