@@ -67,7 +67,7 @@ const Login = ({}: any) => {
 
   return (
     <>
-      <Waiting />
+      {startSocialLogin && <Waiting />}
       <Head>
         <title>MobileCredit - Login</title>
       </Head>
