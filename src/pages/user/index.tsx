@@ -35,7 +35,6 @@ const User = () => {
             <p className="text-dark">{session?.user?.email}</p>
           </div>
           <Link
-            className="btn btn-dark text-light"
             style={{
               width: "250px",
               borderRadius: "20px",

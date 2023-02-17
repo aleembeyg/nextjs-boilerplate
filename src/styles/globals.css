@@ -22,7 +22,7 @@ h1.heading {
   font-size: 40px;
 }
 .main-container {
-  margin-top: 76px;
+  margin-top: 90px;
   min-width: 280px;
   overflow: hidden;
   padding-bottom: 80px;
@@ -49,6 +49,7 @@ h1.heading {
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 1100;
   background-color: #eee;
   font-size: 14px;
 }
@@ -58,6 +59,7 @@ h1.heading {
   padding: 10px;
   box-sizing: border-box;
   box-shadow: none;
+  position: relative;
 }
 .MuiListItem-root {
   display: block;
@@ -79,7 +81,7 @@ h1.heading {
   right: 0;
   left: 0;
   top: 0;
-  z-index: 1000000;
+  z-index: 1101;
   background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;

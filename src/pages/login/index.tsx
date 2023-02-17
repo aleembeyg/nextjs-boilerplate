@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { getSession, signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
-import { BsGithub } from "react-icons/bs";
+import { BsFacebook, BsApple } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import FormControlUnstyled from "@mui/base/FormControlUnstyled";
 import styles from "./index.module.css";
-import { fontSize } from "@mui/system";
+import Waiting from "@/components/waiting";
 
 const Login = ({}: any) => {
   const router = useRouter();
@@ -25,7 +25,9 @@ const Login = ({}: any) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [validate, setValidate] = useState(false);
+  const [startSocialLogin, setStartSocialLogin] = useState(false);
   const handleGoogleSignIn = async () => {
+    setStartSocialLogin(true);
     signIn("google", {
       callbackUrl:
         (router.defaultLocale !== router.locale ? "/" + router.locale : "") +
@@ -57,8 +59,15 @@ const Login = ({}: any) => {
     }
   }, [userName, password]);
 
+  useEffect(() => {
+    return () => {
+      setStartSocialLogin(false);
+    };
+  }, []);
+
   return (
     <>
+      <Waiting />
       <Head>
         <title>MobileCredit - Login</title>
       </Head>
@@ -113,21 +122,51 @@ const Login = ({}: any) => {
               </Button>
               <br />
               <br />
+              <h2>Use Social Login</h2>
               <br />
               <Button
                 variant="outlined"
                 color="inherit"
+                disabled={startSocialLogin}
                 fullWidth
+                style={{ marginBottom: "10px" }}
                 onClick={handleGoogleSignIn}
               >
-                Signin with Google&nbsp;
                 <FcGoogle />
+                &nbsp;Signin with Google
               </Button>
               <br />
-              <br />
-              <Button variant="outlined" color="inherit" fullWidth>
-                Signin with Github&nbsp;
-                <BsGithub />
+              <Button
+                variant="contained"
+                disabled={startSocialLogin}
+                color="primary"
+                fullWidth
+                style={{
+                  color: "#fff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <BsFacebook fill="#fff" />
+                &nbsp;Signin with Facebook
+              </Button>
+              <Button
+                variant="outlined"
+                disabled={startSocialLogin}
+                color="inherit"
+                fullWidth
+                style={{
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <BsApple size={16} fill="#fff" />
+                &nbsp;Signin with Apple
               </Button>
             </form>
             <br />

@@ -3,7 +3,6 @@ import { ReactNode, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
-import Image from "next/image";
 import { Button, Container, Drawer, IconButton } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,7 +11,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { IoMdMenu } from "react-icons/io";
 import styles from "./index.module.css";
-import { indigo } from "@mui/material/colors";
+import { Box } from "@mui/system";
 
 type IMainProps = {
   children: ReactNode;
@@ -61,13 +60,20 @@ const Layout = (props: IMainProps) => {
             className="logo-panel bold-text"
             style={{
               textAlign: "center",
-              background: "indigo",
+              background:
+                "linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%)",
               color: "#fff",
               borderRadius: "5px",
-              padding: "10px"
+              padding: "8px",
             }}
           >
             <FormattedMessage id="page.home.head.title" />
+            <Box style={{ position: "absolute", zIndex: "-1", left: "30px" }}>
+              <div className="lds-ripple">
+                <div></div>
+                <div></div>
+              </div>
+            </Box>
           </Link>
           <List className="nav-bar-menu-list">
             <ListItem disableGutters disablePadding>
@@ -156,14 +162,13 @@ const Layout = (props: IMainProps) => {
             )}
             {session && (
               <ListItem>
-                <Link
-                  href={"/"}
-                  data-toggle="collapse"
-                  className="nav-item nav-link"
+                <Button
+                  disableRipple
+                  style={{ padding: "0px", textTransform: "inherit", fontSize: "16px", color: "inherit", marginTop: "-4px" }}
                   onClick={() => handleLogout()}
                 >
                   <FormattedMessage id="page.home.link.logout" />
-                </Link>
+                </Button>
               </ListItem>
             )}
           </List>
@@ -195,7 +200,7 @@ const Layout = (props: IMainProps) => {
             color: "#fff",
             margin: "20px auto 0px auto",
             borderRadius: "5px",
-            padding: "10px"
+            padding: "10px",
           }}
         >
           TalkHome
@@ -303,7 +308,8 @@ const Layout = (props: IMainProps) => {
               padding: "0px 20px",
               display: "flex",
               alignItems: "center",
-              backgroundColor: "#4c0380",
+              background:
+                "linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%)",
             }}
           >
             <h2 className={styles.title}>

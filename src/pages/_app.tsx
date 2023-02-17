@@ -13,8 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import Waiting from "@/components/waiting";
 
 const messages = {
   ar,
@@ -68,16 +68,9 @@ function App({ Component, pageProps }: AppProps) {
             <ToastContainer />
             <Layout>
               {loader ? (
-                <div className="loading-page-bg">
-                  <Box sx={{ display: "flex" }}>
-                    <div className="lds-ripple">
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </Box>
-                </div>
+                <Waiting />
               ) : (
-                <div style={{ position: "relative" }}>
+                <div>
                   <Component {...pageProps} />
                 </div>
               )}
