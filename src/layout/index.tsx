@@ -164,7 +164,13 @@ const Layout = (props: IMainProps) => {
               <ListItem>
                 <Button
                   disableRipple
-                  style={{ padding: "0px", textTransform: "inherit", fontSize: "16px", color: "inherit", marginTop: "-4px" }}
+                  style={{
+                    padding: "0px",
+                    textTransform: "inherit",
+                    fontSize: "16px",
+                    color: "inherit",
+                    marginTop: "-4px",
+                  }}
                   onClick={() => handleLogout()}
                 >
                   <FormattedMessage id="page.home.link.logout" />
@@ -286,8 +292,8 @@ const Layout = (props: IMainProps) => {
               <FormattedMessage id="page.home.link.contactus" />
             </Link>
           </ListItem>
-          <ListItem>
-            {session == null && (
+          {session == null && (
+            <ListItem>
               <Link
                 href={"/login"}
                 data-toggle="collapse"
@@ -296,8 +302,25 @@ const Layout = (props: IMainProps) => {
               >
                 <FormattedMessage id="page.home.link.login" />
               </Link>
-            )}
-          </ListItem>
+            </ListItem>
+          )}
+          {session && (
+            <ListItem>
+              <Button
+                disableRipple
+                style={{
+                  padding: "0px",
+                  textTransform: "inherit",
+                  fontSize: "16px",
+                  color: "inherit",
+                  marginTop: "-4px",
+                }}
+                onClick={() => handleLogout()}
+              >
+                <FormattedMessage id="page.home.link.logout" />
+              </Button>
+            </ListItem>
+          )}
         </List>
       </Drawer>
       <div className="main-container">

@@ -13,7 +13,7 @@ const User = () => {
       </Head>
       <main style={{ maxWidth: "1100px", margin: "auto" }}>
         <div
-          className="card p-3 shadow"
+          className="card p-3"
           style={{ maxWidth: "550px", margin: "auto", top: "120px" }}
         >
           <div className="p-3" style={{ textAlign: "center" }}>
