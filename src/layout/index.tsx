@@ -53,7 +53,7 @@ const Layout = (props: IMainProps) => {
   const { data: session } = useSession();
   return (
     <Container disableGutters maxWidth={false}>
-      <AppBar color="inherit">
+      <AppBar color="inherit" style={{ boxShadow: "none" }}>
         <Toolbar disableGutters className="fixed-width-panel header-panel">
           <Link
             href={"/"}
