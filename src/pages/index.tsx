@@ -26,9 +26,10 @@ export default function Home() {
           <h1 className="heading">
             <FormattedMessage id="page.home.title" />
           </h1>
-          <h3>
+          <h2>
             <FormattedMessage id="page.home.description" />
-          </h3>
+          </h2>
+          <Topup />
         </Card>
       </section>
     </>

@@ -1,0 +1,24 @@
+.topupDowpdown {
+  display: flex;
+  flex: 1 1;
+  max-width: 400px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 45px;
+  box-sizing: border-box;
+  padding: 0 15px;
+  margin: 15px auto 0 auto;
+}
+.topupDowpdown > div {
+  display: flex;
+  width: 40px;
+}
+.topupDowpdown > div:nth-child(2) {
+    width: 100%;
+}
+.topupDowpdown > div:nth-child(3) {
+    width: 20px;
+}

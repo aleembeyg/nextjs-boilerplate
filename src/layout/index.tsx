@@ -57,6 +57,7 @@ const Layout = (props: IMainProps) => {
         <Toolbar disableGutters className="fixed-width-panel header-panel">
           <Link
             href={"/"}
+            aria-label="Talk Home Logo"
             className="logo-panel bold-text"
             style={{
               textAlign: "center",
@@ -76,69 +77,65 @@ const Layout = (props: IMainProps) => {
             </Box>
           </Link>
           <List className="nav-bar-menu-list">
-            <ListItem disableGutters disablePadding>
-              <List className="nav-bar-menu-list" disablePadding>
-                <ListItem>
-                  <button
-                    role="button"
-                    style={{
-                      cursor: "pointer",
-                      border: 0,
-                      background: "none",
-                      color: "#333",
-                    }}
-                    className="nav-item nav-link"
-                    onClick={() => {
-                      setToggle(false);
-                      handleChangeLanguage("en");
-                    }}
-                  >
-                    EN
-                  </button>
-                </ListItem>
-                <ListItem disableGutters>
-                  <Divider />
-                </ListItem>
-                <ListItem>
-                  <button
-                    role="button"
-                    style={{
-                      cursor: "pointer",
-                      border: 0,
-                      background: "none",
-                      color: "#333",
-                    }}
-                    className="nav-item nav-link"
-                    onClick={() => {
-                      setToggle(false);
-                      handleChangeLanguage("fr");
-                    }}
-                  >
-                    FR
-                  </button>
-                </ListItem>
-                <ListItem disableGutters>
-                  <Divider />
-                </ListItem>
-                <ListItem>
-                  <button
-                    role="button"
-                    style={{
-                      cursor: "pointer",
-                      border: 0,
-                      background: "none",
-                      color: "#333",
-                    }}
-                    className="nav-item nav-link"
-                    onClick={() => {
-                      setToggle(false);
-                      handleChangeLanguage("ar");
-                    }}
-                  >
-                    AR
-                  </button>
-                </ListItem>
-              </List>
+            <ListItem>
+              <button
+                role="button"
+                title="English"
+                aria-label="Press This Button For English"
+                style={{
+                  cursor: "pointer",
+                  border: 0,
+                  background: "none",
+                  color: "#333",
+                }}
+                className="nav-item nav-link"
+                onClick={() => {
+                  setToggle(false);
+                  handleChangeLanguage("en");
+                }}
+              >
+                EN
+              </button>
+            </ListItem>
+            <ListItem>
+              <button
+                role="button"
+                title="French"
+                aria-label="Press This Button For French"
+                style={{
+                  cursor: "pointer",
+                  border: 0,
+                  background: "none",
+                  color: "#333",
+                }}
+                className="nav-item nav-link"
+                onClick={() => {
+                  setToggle(false);
+                  handleChangeLanguage("fr");
+                }}
+              >
+                FR
+              </button>
+            </ListItem>
+            <ListItem>
+              <button
+                role="button"
+                title="Arabic"
+                aria-label="Press This Button For Arabic"
+                style={{
+                  cursor: "pointer",
+                  border: 0,
+                  background: "none",
+                  color: "#333",
+                }}
+                className="nav-item nav-link"
+                onClick={() => {
+                  setToggle(false);
+                  handleChangeLanguage("ar");
+                }}
+              >
+                AR
+              </button>
             </ListItem>
             <ListItem>
               <Link
@@ -335,12 +332,12 @@ const Layout = (props: IMainProps) => {
                 "linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%)",
             }}
           >
-            <h2 className={styles.title}>
+            <div className={styles.title}>
               Switch To <br />
               Rechargeable Calling Cards
               <br />
               Click to buy and we&apos;ll send your PIN
-            </h2>
+            </div>
           </div>
         )}
         {props.children}
