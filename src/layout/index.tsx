@@ -12,6 +12,7 @@ import ListItem from "@mui/material/ListItem";
 import { IoMdMenu } from "react-icons/io";
 import styles from "./index.module.css";
 import { Box } from "@mui/system";
+import { relative } from "path";
 
 type IMainProps = {
   children: ReactNode;
@@ -66,10 +67,18 @@ const Layout = (props: IMainProps) => {
               color: "#fff",
               borderRadius: "5px",
               padding: "8px",
+              position: "relative",
             }}
           >
             <FormattedMessage id="page.home.head.title" />
-            <Box style={{ position: "absolute", zIndex: "-1", left: "30px" }}>
+            <Box
+              style={{
+                position: "absolute",
+                zIndex: "-1",
+                left: "0",
+                right: "0",
+              }}
+            >
               <div className="lds-ripple">
                 <div></div>
                 <div></div>
