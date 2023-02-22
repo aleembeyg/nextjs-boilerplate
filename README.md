@@ -26,12 +26,9 @@ App Demo is available on [TalkHome Demo App](https://nextjs-boilerplate-aleembey
 
 ## Main Features:
 - PWA
-- Home Page
-- Users Listing
 - Social Login with NextAuth
 - Multiligual
-- SEO Friendly
-- Mobile Friendly
+- SEO & Mobile Friendly
 - Fulfill ADA Compliance A+ Level
 
 
