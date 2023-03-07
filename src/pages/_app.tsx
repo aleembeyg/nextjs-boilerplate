@@ -1,5 +1,4 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import "@/styles/globals.scss";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -7,13 +6,12 @@ import { IntlProvider } from "react-intl";
 import ar from "@/lang/ar.json";
 import en from "@/lang/en.json";
 import fr from "@/lang/fr.json";
-import Layout from "../layout";
+import Layout from "../layout/main";
 import { store, wrapper } from "@/redux/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import Box from "@mui/material/Box";
 import Waiting from "@/components/waiting";
 
 const messages = {
@@ -22,7 +20,7 @@ const messages = {
   en,
 };
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: any) {
   const [loader, setLoader] = useState(false);
   const { locale } = useRouter();
   const router = useRouter();
@@ -55,6 +53,11 @@ function App({ Component, pageProps }: AppProps) {
       doc.querySelector("html").setAttribute("lang", lang);
     }
   }, [router.locale]);
+  const renderWithLayout =
+    Component.getLayout ||
+    function (page: any) {
+      return <Layout>{loader ? <Waiting /> : <div>{page}</div>}</Layout>;
+    };
   return (
     <>
       <Head>
@@ -66,15 +69,7 @@ function App({ Component, pageProps }: AppProps) {
         <Provider store={store}>
           <SessionProvider session={pageProps.session}>
             <ToastContainer />
-            <Layout>
-              {loader ? (
-                <Waiting />
-              ) : (
-                <div>
-                  <Component {...pageProps} />
-                </div>
-              )}
-            </Layout>
+            {renderWithLayout(<Component {...pageProps} />)}
           </SessionProvider>
         </Provider>
       </IntlProvider>

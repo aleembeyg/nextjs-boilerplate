@@ -7,17 +7,16 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import {
+  Box,
   Button,
   Card,
   CircularProgress,
-  FormLabel,
-  Input,
-  InputLabel,
   TextField,
 } from "@mui/material";
 import FormControlUnstyled from "@mui/base/FormControlUnstyled";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 import Waiting from "@/components/waiting";
+import UserLayout from "@/layout/user";
 
 const Login = ({}: any) => {
   const router = useRouter();
@@ -184,6 +183,12 @@ const Login = ({}: any) => {
 };
 
 export default Login;
+
+Login.getLayout = (page: any) => {
+  return (
+   <UserLayout page={page}/>
+  );
+};
 
 export async function getServerSideProps(context: any) {
   const session = await getSession(context);

@@ -1,3 +1,4 @@
+@import "../../styles//variables";
 div.title {
   color: #fff;
   max-width: 550px;
@@ -6,22 +7,32 @@ div.title {
   padding-right: 20px;
   font-size: 35px;
 }
+.bannerBG {
+  height: 300px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 .logoIcon {
-    width: 100px;
-    margin: 10px auto;
-    background: linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%);
+  width: 100px;
+  margin: 10px auto;
 }
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 899px) {
 }
 @media only screen and (max-width: 640px) {
-    div.title {
-      font-size: 27px;
-    }
+  .bannerBG {
+    border-radius: 0px;
+    width: auto;
+  }
+  div.title {
+    font-size: 27px;
+  }
 }
 @media only screen and (max-width: 320px) {
-    div.title {
-      font-size: 24px;
-    }
+  div.title {
+    font-size: 24px;
+  }
 }

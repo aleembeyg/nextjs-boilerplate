@@ -1,0 +1,41 @@
+@import "../styles/variables";
+.homeSection {
+  padding: 15px;
+  position: relative;
+}
+.homeSection .cardPanel {
+  padding: 40px;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+  margin-top: -80px;
+}
+.packages {
+  position: relative;
+}
+.buyNow {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border: 0px;
+  border-radius: 8px;
+  background-color: #dee228;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+.buyNow:hover {
+  transform: scale(1.02);
+}
+@media only screen and (max-width: 640px) {
+  .homeSection .cardPanel {
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .packages {
+    border-radius: 0 0 0 0;
+  }
+}

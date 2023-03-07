@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "./variables";
 * {
   font: 100% "Poppins", sans-serif;
   margin: 0;
@@ -27,6 +28,40 @@ h1.heading {
   overflow: hidden;
   padding-bottom: 80px;
 }
+.full-bg {
+  @include gradient-bg;
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  width: calc(100% - 100px);
+}
+.full-bg.right {
+  right: 0;
+  border-radius: 0px 0px 0px 60px;
+}
+.full-bg.left {
+  left: 0;
+  border-radius: 0px 0px 60px 0px;
+}
+@media (max-width: 1220px) {
+  .full-bg {
+    width: calc(100% - 50px);
+  }
+}
+@media (max-width: 1024px) {
+  .full-bg {
+    width: calc(100% - 20px);
+  }
+}
+@media (max-width: 767px) {
+  .full-bg {
+    width: calc(100%);
+    right: 0;
+    left: 0;    
+    border-radius: 0px 0px 0px 0px !important;
+  }
+}
 .fixed-panel {
   position: fixed;
 }
@@ -50,7 +85,7 @@ h1.heading {
   bottom: 0;
   width: 100%;
   z-index: 1100;
-  background-color: #eee;
+  background-color: $primary;
   font-size: 14px;
 }
 .header-panel {
@@ -154,5 +189,78 @@ h1.heading {
   h1.heading {
     font-size: 25px;
     font-weight: 600;
+  }
+}
+.slider-packages {
+  padding: 10px;
+  .slick-slider {
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 850px;
+    position: relative;
+    .slick-track {
+      margin: auto;
+    }
+  }
+  .card-validity {
+    right: 8px;
+    position: absolute;
+    top: 10px;
+    background: red;
+    border-radius: 10px;
+    padding: 1px 10px;
+    span {
+      font-size: 11px;
+      color: #fff;
+    }
+    strong {
+      color: #fff;
+    }
+  }
+  .slick-dots {
+    bottom: 0px;
+  }
+  .slick-dots li button:before {
+    font-size: 10px;
+  }
+  .slick-slide {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    > div {
+      > div {
+        img {
+          width: 100%;
+          transition: none;
+        }
+        background-color: #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .slick-dots li.slick-active button:before {
+    color: #fff;
+  }
+  .slick-next {
+    height: 50px;
+    width: 50px;
+    right: -60px;
+  }
+  .slick-prev {
+    height: 50px;
+    width: 50px;
+    left: -60px;
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    font-size: 50px !important;
   }
 }

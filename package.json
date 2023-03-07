@@ -14,6 +14,7 @@
     "@mui/material": "^5.11.8",
     "@mui/styled-engine-sc": "^5.11.0",
     "@next/font": "13.1.5",
+    "@paypal/react-paypal-js": "^7.8.2",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
@@ -30,15 +31,20 @@
     "react-icons": "^4.7.1",
     "react-intl": "^6.2.5",
     "react-redux": "^8.0.5",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.2.2",
+    "sass": "^1.58.3",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
     "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@types/bootstrap": "^5.2.6"
+    "@types/bootstrap": "^5.2.6",
+    "@types/react-slick": "^0.23.10",
+    "@types/slick-carousel": "^1.6.37"
   }
 }

@@ -10,9 +10,8 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { IoMdMenu } from "react-icons/io";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 import { Box } from "@mui/system";
-import { relative } from "path";
 
 type IMainProps = {
   children: ReactNode;
@@ -331,16 +330,8 @@ const Layout = (props: IMainProps) => {
       </Drawer>
       <div className="main-container">
         {!hideHeader && (
-          <div
-            style={{
-              height: "300px",
-              padding: "0px 20px",
-              display: "flex",
-              alignItems: "center",
-              background:
-                "linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%)",
-            }}
-          >
+          <div className={styles.bannerBG}>
+            <div className="full-bg left"></div>
             <div className={styles.title}>
               Switch To <br />
               Rechargeable Calling Cards

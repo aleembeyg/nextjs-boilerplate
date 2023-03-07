@@ -1,6 +1,6 @@
 import { Card } from "@mui/material";
 import Head from "next/head";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
 const ContactUs = () => {
   return (
