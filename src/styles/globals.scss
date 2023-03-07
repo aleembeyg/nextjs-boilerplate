@@ -58,7 +58,7 @@ h1.heading {
   .full-bg {
     width: calc(100%);
     right: 0;
-    left: 0;    
+    left: 0;
     border-radius: 0px 0px 0px 0px !important;
   }
 }
@@ -220,8 +220,15 @@ h1.heading {
   .slick-dots {
     bottom: 0px;
   }
-  .slick-dots li button:before {
+  .slick-dots li button::before {
     font-size: 10px;
+    color: #fff;
+  }
+  .slick-dots li {
+    margin: 0;
+  }
+  li.slick-active button::before {
+    color: #dee228 !important;
   }
   .slick-slide {
     overflow: hidden;
