@@ -3,7 +3,13 @@ import { ReactNode, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
-import { Button, Container, Drawer, IconButton } from "@mui/material";
+import {
+  Button,
+  Container,
+  Drawer,
+  IconButton,
+  useForkRef,
+} from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
@@ -49,10 +55,21 @@ const Layout = (props: IMainProps) => {
     };
   }, [router]);
 
+  useEffect(() => {
+    window.onscroll = (e) => {
+      if (document.documentElement.scrollTop > 40) {
+        document.getElementById("headerPanel")?.classList.add("fixed-panel");
+      } else {
+        document.getElementById("headerPanel")?.classList.remove("fixed-panel");
+      }
+    };
+  }, []);
+
   const { data: session } = useSession();
   return (
     <Container disableGutters maxWidth={false}>
-      <AppBar color="inherit" style={{ boxShadow: "none" }}>
+      <AppBar color="inherit" id="headerPanel" style={{ boxShadow: "none" }}>
+        <div className="full-bg"></div>
         <Toolbar disableGutters className="fixed-width-panel header-panel">
           <Link
             href={"/"}

@@ -28,15 +28,49 @@ h1.heading {
   overflow: hidden;
   padding-bottom: 80px;
 }
+.nav-bar-menu-list {
+  button {
+    color: #fff !important;
+  }
+  a {
+    color: #fff !important;
+  }
+}
+.inner-logo {
+  font-size: 25px;
+  text-align: center;
+  max-width: 250px;
+  color: #fff;
+  margin: 20px auto 0px auto;
+  border-radius: 5px;
+  padding: 10px;
+}
+.fixed-panel {
+  .menu-button-size path {
+    color: #000;
+  }
+  .nav-bar-menu-list {
+    button {
+      color: #000 !important;
+    }
+    a {
+      color: #000 !important;
+    }
+  }
+}
+.menu-button-size path {
+  color: #fff;
+}
 .full-bg {
   @include gradient-bg;
   position: absolute;
   height: 100%;
   z-index: -1;
   top: 0;
-  width: calc(100% - 100px);
+  width: calc(100% - 10px);
+  transition: background-color 0.3s;
   @include respond(tablet) {
-    width: calc(100% - 50px);
+    width: calc(100% - 10px);
   }
   @include respond(minTablet) {
     width: calc(100%);
@@ -58,12 +92,17 @@ h1.heading {
 }
 .fixed-panel {
   position: fixed;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 10%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%) !important;
 }
 .fixed-width-panel {
   width: 100%;
   max-width: 1024px;
   margin: auto;
   color: $bgTextColor;
+}
+.fixed-panel .full-bg {
+  background-color: #fff !important;
 }
 .nav-bar-menu-list,
 .nav-bar-menu-list-mobile {
@@ -76,7 +115,6 @@ h1.heading {
   display: flex;
   padding: 20px;
   box-sizing: border-box;
-  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1100;
@@ -267,7 +305,6 @@ h1.heading {
     @include respond(minTablet) {
       right: -10px;
     }
-
   }
   .slick-prev {
     height: 50px;
