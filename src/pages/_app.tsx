@@ -53,11 +53,18 @@ function App({ Component, pageProps }: any) {
       doc.querySelector("html").setAttribute("lang", lang);
     }
   }, [router.locale]);
-  const renderWithLayout =
-    Component.getLayout ||
-    function (page: any) {
-      return <Layout>{loader ? <Waiting /> : <div>{page}</div>}</Layout>;
-    };
+  const renderWithLayout = loader
+    ? function (page: any) {
+        return (
+          <Layout>
+            <Waiting />
+          </Layout>
+        );
+      }
+    : Component.getLayout ||
+      function (page: any) {
+        return <Layout>{page}</Layout>;
+      };
   return (
     <>
       <Head>

@@ -35,31 +35,25 @@ h1.heading {
   z-index: -1;
   top: 0;
   width: calc(100% - 100px);
+  @include respond(tablet) {
+    width: calc(100% - 50px);
+  }
+  @include respond(minTablet) {
+    width: calc(100%);
+  }
 }
 .full-bg.right {
   right: 0;
   border-radius: 0px 0px 0px 60px;
+  @include respond(minTablet) {
+    border-radius: 0px;
+  }
 }
 .full-bg.left {
   left: 0;
   border-radius: 0px 0px 60px 0px;
-}
-@media (max-width: 1220px) {
-  .full-bg {
-    width: calc(100% - 50px);
-  }
-}
-@media (max-width: 1024px) {
-  .full-bg {
-    width: calc(100% - 20px);
-  }
-}
-@media (max-width: 767px) {
-  .full-bg {
-    width: calc(100%);
-    right: 0;
-    left: 0;
-    border-radius: 0px 0px 0px 0px !important;
+  @include respond(minTablet) {
+    border-radius: 0px;
   }
 }
 .fixed-panel {
@@ -69,6 +63,7 @@ h1.heading {
   width: 100%;
   max-width: 1024px;
   margin: auto;
+  color: $bgTextColor;
 }
 .nav-bar-menu-list,
 .nav-bar-menu-list-mobile {
@@ -85,8 +80,13 @@ h1.heading {
   bottom: 0;
   width: 100%;
   z-index: 1100;
-  background-color: $primary;
+  background-color: $bgBlack;
   font-size: 14px;
+  color: $bgTextColor;
+  @include respond(minTablet) {
+    border-radius: 20px 20px 0 0;
+    position: relative;
+  }
 }
 .header-panel {
   display: flex;
@@ -117,11 +117,14 @@ h1.heading {
   right: 0;
   left: 0;
   top: 0;
-  z-index: 1101;
-  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1101;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(65%) blur(1.25px);
+  cursor: not-allowed !important;
 }
 .lds-ripple {
   display: inline-block;
@@ -131,7 +134,7 @@ h1.heading {
 }
 .lds-ripple div {
   position: absolute;
-  border: 5px solid indigo;
+  border: 5px solid $primary;
   opacity: 1;
   border-radius: 50%;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;

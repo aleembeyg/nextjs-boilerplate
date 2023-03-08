@@ -1,5 +1,54 @@
-$primary: #eee ;
+$primary: #0098da;
+$secodnary: #dee228;
+$tabColor: #ccc;
+$linkColor: #ccc;
+$bgBlack: #000;
+$bgTextColor: #fff;
 
 @mixin gradient-bg {
-    background: linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%);
-} 
+  background: #0098da;
+}
+
+@mixin respond($breakpoint) {
+  // $breakpoint is simply a variable that can have several values
+
+  @if $breakpoint==minScreen {
+    // here `laptop` is the value of $breakpoint
+    // when call laptop, we mean the following piece of code
+    @media only screen and (max-width: 1220px) {
+      @content;
+    }
+  }
+  @if $breakpoint==tablet {
+    // here `laptop` is the value of $breakpoint
+    // when call laptop, we mean the following piece of code
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==minTablet {
+    // here `laptop` is the value of $breakpoint
+    // when call laptop, we mean the following piece of code
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==minmobile {
+    @media only screen and (max-width: 320px) {
+      @content;
+    }
+  }
+  @if $breakpoint==fold {
+    @media only screen and (max-width: 280px) {
+      @content;
+    }
+  }
+}

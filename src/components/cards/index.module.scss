@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+ .buyNow {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border: 0px;
+  border-radius: 8px;
+  background-color: $secodnary;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.buyNow:hover {
+  transform: scale(1.02);
+}
