@@ -1,15 +1,23 @@
 import Slider from "react-slick";
 import { useState } from "react";
 import styles from "./index.module.scss";
-const settings = {
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  centerPadding: "60px",
-  dots: true,
-  arrows: false,
-};
-const CardsSlider = () => {
+
+const CardsSlider = ({ onDrag }: any) => {
+  const settings = {
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerPadding: "60px",
+    dots: true,
+    arrows: false,
+    draggable: true,
+    beforeChange: (e: any) => {
+      onDrag(false);
+    },
+    afterChange: (e: any) => {
+      onDrag(true);
+    },
+  };
   const [cards, setCards] = useState([1, 2, 3, 4]);
   return (
     <Slider {...settings}>

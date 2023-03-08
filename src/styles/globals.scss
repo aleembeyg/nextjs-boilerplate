@@ -263,11 +263,20 @@ h1.heading {
     height: 50px;
     width: 50px;
     right: -60px;
+    z-index: 1;
+    @include respond(minTablet) {
+      right: -10px;
+    }
+
   }
   .slick-prev {
     height: 50px;
     width: 50px;
     left: -60px;
+    @include respond(minTablet) {
+      left: -10px;
+    }
+    z-index: 1;
   }
   .slick-next:before,
   .slick-prev:before {
