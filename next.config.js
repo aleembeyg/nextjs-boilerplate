@@ -9,6 +9,11 @@ const nextConfig = withPWA({
     buildActivity: false,
   },
   reactStrictMode: true,
+  exportPathMap: function () {
+    return {
+      "/": { page: "/" },
+    };
+  },
   // i18n: {
   //   // These are all the locales you want to support in
   //   // your application
