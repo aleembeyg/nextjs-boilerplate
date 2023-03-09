@@ -9,6 +9,9 @@ const nextConfig = withPWA({
     buildActivity: false,
   },
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
   exportPathMap: function () {
     return {
       "/": { page: "/" },
