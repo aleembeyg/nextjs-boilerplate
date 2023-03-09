@@ -12,11 +12,6 @@ const nextConfig = withPWA({
   images: {
     unoptimized: true,
   },
-  exportPathMap: function () {
-    return {
-      "/": { page: "/" },
-    };
-  },
 });
 
 module.exports = nextConfig;
