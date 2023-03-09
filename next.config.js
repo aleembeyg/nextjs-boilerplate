@@ -14,6 +14,7 @@ const nextConfig = withPWA({
       "/": { page: "/" },
     };
   },
+  output: 'standalone',
   // i18n: {
   //   // These are all the locales you want to support in
   //   // your application
