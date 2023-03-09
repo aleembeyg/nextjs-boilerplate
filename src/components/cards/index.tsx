@@ -49,7 +49,7 @@ const Cards = () => {
     <Slider {...settings}>
       {cards.map((index: number) => (
         <div key={index}>
-          <CardsSlider onDrag={setDrag} />
+          <CardsSlider />
         </div>
       ))}
     </Slider>
