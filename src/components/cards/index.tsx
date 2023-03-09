@@ -1,58 +1,18 @@
-import Slider from "react-slick";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styles from "./index.module.scss";
 import CardsSlider from "../cardsSlider";
+import { Grid } from "@mui/material";
 
 const Cards = () => {
-  const [drag, setDrag] = useState(true);
-  const settings = {
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    centerPadding: "60px",
-    dots: false,
-    arrows: true,
-    draggable: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-    ],
-  };
-
-  const [cards, setCards] = useState([1, 2, 3, 4]);
+  const [cards, setCards] = useState([1, 2]);
   return (
-    <Slider {...settings}>
+    <Grid container className={styles.CardsContainer} alignItems="center" justifyContent="center" spacing={2}>
       {cards.map((index: number) => (
-        <div key={index}>
-          <CardsSlider onDrag={setDrag} />
-        </div>
+        <Grid key={index} item xs={12} sm={6} md={4}>
+          <CardsSlider />
+        </Grid>
       ))}
-    </Slider>
+    </Grid>
   );
 };
 export default Cards;

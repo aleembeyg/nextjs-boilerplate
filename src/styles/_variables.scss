@@ -2,8 +2,14 @@ $primary: #0098da;
 $secodnary: #dee228;
 $tabColor: #ccc;
 $linkColor: #ccc;
-$bgBlack: #000;
+$bgBlack: #273240;
 $bgTextColor: #fff;
+
+@mixin content-center-panel {
+  max-width: 1024px;
+  margin: auto;
+  padding: 20px;
+}
 
 @mixin gradient-bg {
   background: #0098da;
@@ -37,6 +43,19 @@ $bgTextColor: #fff;
 
   @if $breakpoint==mobile {
     @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint== mdmobile {
+    @media only screen and (max-width: 420px) {
+      @content;
+    }
+  }
+
+  
+  @if $breakpoint== smmobile {
+    @media only screen and (max-width: 380px) {
       @content;
     }
   }

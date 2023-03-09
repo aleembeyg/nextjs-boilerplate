@@ -23,7 +23,7 @@ h1.heading {
   font-size: 40px;
 }
 .main-container {
-  margin-top: 76px;
+  margin-top: 56px;
   min-width: 280px;
   overflow: hidden;
   padding-bottom: 80px;
@@ -92,8 +92,7 @@ h1.heading {
 }
 .fixed-panel {
   position: fixed;
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 10%),
-    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%) !important;
+  box-shadow: 0px 6px 6px 0px rgb(0 0 0 / 5%) !important;
 }
 .fixed-width-panel {
   width: 100%;
@@ -210,6 +209,9 @@ h1.heading {
     opacity: 0;
   }
 }
+.MuiGrid-item {
+  padding: 0 !important;
+}
 .MuiCircularProgress-circle {
   color: #fff;
 }
@@ -260,10 +262,20 @@ h1.heading {
   }
   .slick-dots {
     bottom: 0px;
+    top: 66%;
+    height: 0px;
+    @include respond(mdmobile) {
+      top: 68%;
+    }
+
+    @include respond(smmobile) {
+      top: 66%;
+    }
   }
   .slick-dots li button::before {
     font-size: 10px;
-    color: #fff;
+    color: #333;
+    opacity: 0.5;
   }
   .slick-dots li {
     margin: 0;
@@ -283,6 +295,7 @@ h1.heading {
         img {
           width: 100%;
           transition: none;
+          margin-bottom: 20px;
         }
         background-color: #ddd;
         border-radius: 8px;

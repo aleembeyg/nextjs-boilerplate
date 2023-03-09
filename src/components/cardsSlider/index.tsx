@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import { useState } from "react";
 import styles from "./index.module.scss";
 
-const CardsSlider = ({ onDrag }: any) => {
+const CardsSlider = () => {
   const settings = {
     speed: 500,
     slidesToShow: 1,
@@ -10,13 +10,7 @@ const CardsSlider = ({ onDrag }: any) => {
     centerPadding: "60px",
     dots: true,
     arrows: false,
-    draggable: true,
-    beforeChange: (e: any) => {
-      onDrag(false);
-    },
-    afterChange: (e: any) => {
-      onDrag(true);
-    },
+    draggable: true
   };
   const [cards, setCards] = useState([1, 2, 3, 4]);
   return (
@@ -32,7 +26,7 @@ const CardsSlider = ({ onDrag }: any) => {
             src="https://cards.talkhome.co.uk/assets/imgs/section-imgs/th-cc-10.png"
             alt=""
           />
-          <button className={styles.buyNow}>Buy Now</button>
+          <button className={styles.buyNow}>Buy Now €{index * 5}</button>
         </div>
       ))}
     </Slider>

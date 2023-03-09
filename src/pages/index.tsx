@@ -5,6 +5,7 @@ import { Card } from "@mui/material";
 import { FormattedMessage, useIntl } from "react-intl";
 import CardsSlider from "@/components/cardsSlider";
 import Cards from "@/components/cards";
+import FAQsAccordion from "@/components/faqsAccordion";
 
 export default function Home() {
   const intl = useIntl();
@@ -36,6 +37,9 @@ export default function Home() {
           <div className="full-bg right"></div>
           <Cards />
         </div>
+      </section>
+      <section>
+        <FAQsAccordion />
       </section>
     </>
   );

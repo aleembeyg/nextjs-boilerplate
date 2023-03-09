@@ -1,5 +1,9 @@
 @import "../../styles/variables";
- .buyNow {
+.CardsContainer {
+  @include content-center-panel;
+  width: 100% !important;
+}
+.buyNow {
   width: 100%;
   padding: 10px;
   text-align: center;

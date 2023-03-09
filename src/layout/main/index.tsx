@@ -200,7 +200,6 @@ const Layout = (props: IMainProps) => {
           style={{
             fontSize: "25px",
             textAlign: "center",
-            background: "indigo",
             maxWidth: "250px",
             color: "#fff",
             margin: "20px auto 0px auto",
