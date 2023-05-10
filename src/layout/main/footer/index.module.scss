@@ -1,0 +1,9 @@
+@import "../../../styles/variables";
+.footerContainer{
+    background-color: $darkBgColor;
+    padding: 30px 40px;
+    border-radius:0px 90px 0px 0px ;
+    .footerContent{
+        color: $bgTextColor;
+    }
+}

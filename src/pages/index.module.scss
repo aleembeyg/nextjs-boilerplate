@@ -1,0 +1,186 @@
+@import "../styles/variables";
+.sectionContainer {
+  background-color: $lightBgColor;
+  border-radius: 0px 0px 200px 0px;
+  padding: 0px 30px;
+  overflow: hidden;
+  @media (max-width: 1260px) {
+    border-radius: 0px 0px 130px 0px;
+  }
+  @media (max-width: 1100px) {
+    border-radius: 0px 0px 90px 0px;
+  }
+  @media (max-width: 900px) {
+    overflow: visible;
+  }
+  @media (max-width: 640px) {
+    padding: 0px 20px;
+    border-radius: 0px 0px 50px 0px;
+  }
+  .homeSection {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 30px 0px 60px 0px;
+    @media (max-width: 1200px) {
+      padding: 20px 0px 50px 0px;
+    }
+    @media (max-width: 900px) {
+      text-align: center;
+      padding-bottom: 0;
+    }
+    @media (max-width: 640px) {
+      padding-top: 15px;
+    }
+    .bannerImage {
+      box-sizing: border-box;
+      position: relative;
+      img {
+        right: -20px !important;
+        left: auto !important;
+        transform: scale(1.12);
+        @media (max-width: 1320px) {
+          right: 0px !important;
+          transform: scale(1.08);
+          right: 40px !important;
+        }
+        @media (max-width: 1200px) {
+          transform: scale(1.2);
+          right: 50px !important;
+        }
+        @media (max-width: 1100px) {
+          transform: scale(1.32);
+          right: 40px !important;
+        }
+        @media (max-width: 900px) {
+          padding-top: 0px;
+          transform: scale(1);
+          margin-top: 40px;
+          margin-bottom: -15%;
+        }
+        @media (max-width: 640px) {
+          transform: scale(1.2);
+          margin-top: 60px;
+          right: 40px !important;
+        }
+        @media (max-width: 480px) {
+          margin-top: 50px;
+        }
+      }
+    }
+    .ratingPanel {
+      margin-bottom: 40px;
+      @media (max-width: 1320px) {
+        margin-bottom: 30px;
+      }
+      @media (max-width: 900px) {
+        margin: auto;
+        max-width: 380px;
+        margin-bottom: 30px;
+        background-color: $bgTextColor;
+        padding: 12px 25px;
+        justify-content: center;
+        border-radius: 40px;
+        > div {
+          justify-content: center;
+        }
+      }
+      @media (max-width: 640px) {
+        margin-bottom: 25px;
+        max-width: none;
+        display: inline-block;
+        > div {
+          justify-content: center;
+          flex-direction: row-reverse;
+        }
+      }
+    }
+    h1 {
+      @media (max-width: 1200px) {
+        font-size: 50px;
+      }
+      @media (max-width: 1100px) {
+        font-size: 45px;
+      }
+      @media (max-width: 900px) {
+        font-size: 32px;
+      }
+      @media (max-width: 768px) {
+        font-size: 28px;
+      }
+      @media (max-width: 480px) {
+        font-size: 24px;
+      }
+      @media (max-width: 380px) {
+        font-size: 20px;
+      }
+      @media (max-width: 319px) {
+        font-size: 18px;
+      }
+    }
+    h2 {
+      padding-top: 20px;
+      max-width: 370px;
+      @media (max-width: 1200px) {
+        font-size: 15px;
+        max-width: 345px;
+        padding-top: 10px;
+      }
+      @media (max-width: 1100px) {
+        font-size: 14px;
+        max-width: 325px;
+      }
+      @media (max-width: 900px) {
+        font-size: 15px;
+        max-width: 350px;
+        margin: auto;
+        margin-top: 2px;
+      }
+      @media (max-width: 380px) {
+        font-size: 14px;
+        line-height: 22px;
+        max-width: 330px;
+      }
+    }
+    .btnBuyCard {
+      font-family: "Poppins-Bold";
+      width: 100%;
+      max-width: 250px;
+      margin-top: 40px;
+      height: 60px;
+      @media (max-width: 900px) {
+        max-width: 200px;
+        margin-top: 30px;
+        font-size: 16px;
+        height: 50px;
+      }
+      @media (max-width: 640px) {
+        max-width: 160px;
+      }
+    }
+  }
+}
+.topupSection {
+  background-color: $primary;
+  min-height: 290px;
+  border-radius: 0px 0px 180px 0px;
+  margin-top: -190px;
+  position: relative;
+  z-index: -1;
+  @media (max-width: 1320px) {
+    border-radius: 0px 0px 130px 0px;
+  }
+  @media (max-width: 1100px) {
+    border-radius: 0px 0px 90px 0px;
+  }
+  @media (max-width: 900px) {
+    min-height: 500px;
+  }
+  @media (max-width: 640px) {
+    padding: 0px 20px;
+    border-radius: 0px 0px 50px 0px;
+  }
+}
+.cardsSection {
+  min-height: 490px;
+}

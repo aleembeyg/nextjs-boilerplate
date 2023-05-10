@@ -1,0 +1,15 @@
+.contactSection {
+  padding: 15px;
+}
+.contactSection .cardPanel {
+  padding: 40px;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+  margin-top: -80px;
+}
+@media only screen and (max-width: 640px) {
+    .homeSection .cardPanel {
+      padding: 40px 30px;
+    }
+}

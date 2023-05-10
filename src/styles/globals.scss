@@ -1,65 +1,96 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  src: local('Poppins'), url('../assests/fonts/Poppins-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins-Medium';
+  font-style: normal;
+  font-display: swap;
+  src: local('Poppins-Medium'), url('../assests/fonts/Poppins-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins-Bold';
+  font-style: normal;
+  font-display: swap;
+  src: local('Poppins-Bold'), url('../assests/fonts/Poppins-Bold.woff2') format('woff2');
+}
 @import "./variables";
 * {
   font: 100% "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
   text-decoration: none;
-  color: #222;
+  color: $bgBlack;
+  box-sizing: border-box;
 }
-.bold-text {
-  font-weight: 600;
-  font-size: 20px;
+main {
+  min-height: 100vh;
 }
-h1.heading {
-  font-size: 35px;
-  font-weight: 600;
+h1.MuiTypography-root {
+  font-size: 55px;
+  font-family: "Poppins-Bold", sans-serif;
 }
-.logo-panel {
-  display: flex;
-  align-items: center;
+h2.MuiTypography-root {
+  font-size: 16px;
+  font-family: "Poppins-Medium", sans-serif;
+  line-height: 25px;
 }
-.menu-button-size {
-  font-size: 40px;
+.MuiContainer-root {
+  max-width: 1230px !important;
+  margin: auto !important;
+  padding: 0 !important;
 }
-.main-container {
-  margin-top: 76px;
-  min-width: 280px;
-  overflow: hidden;
-  padding-bottom: 80px;
+.MuiButtonBase-root {
+  text-transform: capitalize;
+  height: 50px;
+  box-shadow: none;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
 }
-.nav-bar-menu-list {
-  button {
-    color: #fff !important;
-  }
-  a {
-    color: #fff !important;
-  }
+.MuiButton-textPrimary,
+.MuiButton-containedPrimary {
+  background-color: $primaryBtn !important;
+  color: $bgTextColor;
 }
-.inner-logo {
-  font-size: 25px;
-  text-align: center;
-  max-width: 250px;
-  color: #fff;
-  margin: 20px auto 0px auto;
-  border-radius: 5px;
-  padding: 10px;
+.MuiButton-textSecondary,
+.MuiButton-containedSecondary,
+.MuiButton-textSecondary:hover,
+.MuiButton-containedSecondary:hover {
+  background-color: $secodnary;
+  color: $bgBlack;
 }
 .fixed-panel {
-  .menu-button-size path {
-    color: #000;
+  width: 100%;
+  z-index: 1;
+  .MuiButton-textPrimary,
+  .MuiButton-containedPrimary {
+    background-color: $primary !important;
+    color: $bgTextColor;
   }
-  .nav-bar-menu-list {
-    button {
-      color: #000 !important;
+  .MuiButton-outlined {
+    color: $primary !important;
+    border: 2px solid $primary !important;
+  }
+  > div {
+    transition: background-color 1s;
+    background-color: #fff;
+    padding: 8px 30px;
+    border-radius: 0px 0px 46px 0px;
+    box-shadow: 0px 3px 6px #00000029;
+    @media (max-width: 980px) {      
+      border-radius: 0px 0px 30px 0px;
+      padding: 20px;
+      box-shadow: 0px 3px 6px #00000029;
     }
-    a {
-      color: #000 !important;
+    @media (max-width: 640px) {      
+      border-radius: 0px 0px 30px 0px;
+      padding: 15px 25px;
+      box-shadow: 0px 3px 6px #00000029;
+    }
+    @media (max-width: 320px) {
+      padding: 10px 15px;
     }
   }
-}
-.menu-button-size path {
-  color: #fff;
 }
 .full-bg {
   @include gradient-bg;
@@ -92,59 +123,6 @@ h1.heading {
 }
 .fixed-panel {
   position: fixed;
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 10%),
-    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%) !important;
-}
-.fixed-width-panel {
-  width: 100%;
-  max-width: 1024px;
-  margin: auto;
-  color: $bgTextColor;
-}
-.fixed-panel .full-bg {
-  background-color: #fff !important;
-}
-.nav-bar-menu-list,
-.nav-bar-menu-list-mobile {
-  display: flex;
-}
-.nav-bar-menu-list-mobile {
-  flex-direction: column;
-}
-.footer-panel {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  bottom: 0;
-  width: 100%;
-  z-index: 1100;
-  background-color: $bgBlack;
-  font-size: 14px;
-  color: $bgTextColor;
-  @include respond(minTablet) {
-    border-radius: 20px 20px 0 0;
-    position: relative;
-  }
-}
-.header-panel {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: none;
-  position: relative;
-  box-shadow: none !important;
-}
-.MuiListItem-root {
-  display: block;
-  width: auto !important;
-}
-.MuiDivider-root {
-  height: 100% !important;
-  border-width: 1px !important;
-}
-.MuiAppBar-root {
-  box-shadow: none;
 }
 /* page loading icon */
 .loading-page-bg {
@@ -172,7 +150,7 @@ h1.heading {
 }
 .lds-ripple div {
   position: absolute;
-  border: 5px solid $primary;
+  border: 5px solid $primaryBtn;
   opacity: 1;
   border-radius: 50%;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;

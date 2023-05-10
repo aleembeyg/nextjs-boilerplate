@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import { useEffect } from "react";
 const Waiting = () => {
   useEffect(() => {
@@ -9,12 +8,12 @@ const Waiting = () => {
   }, []);
   return (
     <div className="loading-page-bg">
-      <Box sx={{ display: "flex" }}>
+      <div style={{ display: "flex" }}>
         <div className="lds-ripple">
           <div></div>
           <div></div>
         </div>
-      </Box>
+      </div>
     </div>
   );
 };

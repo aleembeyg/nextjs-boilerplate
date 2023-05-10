@@ -1,13 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
+import styles from "./index.module.scss";
 
 const fourOFour = () => {
   return (
     <>
-      <Head>
-        <title>MobileCredit - 404 Page Not Found</title>
-      </Head>
       <div
         style={{
           textAlign: "center",
@@ -18,17 +14,10 @@ const fourOFour = () => {
           alignItems: "center",
         }}
       >
-        <h1 style={{ fontSize: "120px" }}>404</h1>
+        <h1 className={styles.heading}>404</h1>
+        <h2 className={styles.secondHeading}>Error</h2>
         <h5 style={{ fontSize: "25px" }}>
-          <p>Something Missing Here...&nbsp;&nbsp;</p>
-          <Link
-            className="btn btn-dark text-white"
-            style={{ width: "150px", borderRadius: "20px" }}
-            href={"/"}
-          >
-            Back To Site &nbsp;&nbsp;
-            <BsArrowRight />
-          </Link>
+          <p>Oops! Page not found</p>
         </h5>
       </div>
     </>

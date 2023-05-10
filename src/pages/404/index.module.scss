@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+.heading {
+  font-size: 100px;
+  font-family: "Poppins-Bold", sans-serif;
+  color: $darkBgColor;
+}
+.secondHeading {
+  font-size: 55px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: $darkBgColor;
+  line-height: 20px;
+  font-family: "Poppins-Medium", sans-serif;
+}

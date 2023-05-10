@@ -1,9 +1,6 @@
-This is a [Next.js](https://nextjs.org/) boilerplate with Material UI. 
+This is a [Next.js](https://nextjs.org/) boilerplate with Bootstrap 5. 
 
 After download, please open this project in VS Code and use this command in terminal "npm i"
-
-## Demo
-App Demo is available on [TalkHome Demo App](https://nextjs-boilerplate-aleembeyg.vercel.app/)
 
 ## Packages Detail:
 ### State Management Packages
@@ -12,22 +9,18 @@ App Demo is available on [TalkHome Demo App](https://nextjs-boilerplate-aleembey
 - redux-saga
 - redux-persist
 ### UI/UX
-- Material UI
+- Bootstrap 5
 - react-icons
 ### Social Login
 - next-auth
 ### Notifications
 - react-toastify
-### Multi Language
-- i18n
-- react-intl
 ### Data Fetch
 - axios
-
 ## Main Features:
-- PWA
+- CC Payemnt 
+- Paypal
 - Social Login with NextAuth
-- Multiligual
 - SEO & Mobile Friendly
 - Fulfill ADA Compliance A+ Level
 

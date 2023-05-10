@@ -1,0 +1,225 @@
+@import "../../../styles/variables";
+.headerContainer {
+  background-color: $lightBgColor;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.5s;
+  @media (max-width: 900px) {
+    padding: 15px 25px 10px 25px;
+  }
+  @media (max-width: 640px) {
+    padding: 15px 25px 5px 25px;
+  }
+  @media (max-width: 340px) {
+    padding: 15px 20px 5px 20px;
+  }
+  @media (max-width: 320px) {
+    padding: 15px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logoPanel {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      align-items: top;
+      width: 200px;
+      @media (max-width: 640px) {
+        width: 150px;
+      }
+      @media (max-width: 340px) {
+        width: 140px;
+      }
+      @media (max-width: 320px) {
+        width: 125px;
+      }
+      img {
+        max-width: 60px;
+        max-height: 70px;
+        @media (max-width: 980px) {
+          max-width: 52px;
+          max-height: 62px;
+        }
+        @media (max-width: 640px) {
+          max-width: 45px;
+          max-height: 55px;
+        }
+        @media (max-width: 320px) {
+          max-width: 40px;
+          max-height: 50px;
+        }
+      }
+      div {
+        padding-left: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-top: 18px;
+        @media (max-width: 980px) {
+          padding-top: 12px;
+        }
+        @media (max-width: 640px) {
+          padding-left: 10px;
+          padding-top: 10px;
+        }
+        @media (max-width: 320px) {
+          padding-left: 8px;
+          padding-top: 8px;
+        }
+        .name {
+          padding: 0;
+          margin: 0;
+          font-size: 17px;
+          font-family: "Poppins-Bold";
+          @media (max-width: 980px) {
+            font-size: 16px;
+          }
+          @media (max-width: 640px) {
+            font-size: 15px;
+          }
+          @media (max-width: 340px) {
+            font-size: 14px;
+          }
+          @media (max-width: 320px) {
+            font-size: 13px;
+          }
+        }
+        .since {
+          font-size: 15px;
+          font-family: "Poppins";
+          letter-spacing: 1.6px;
+          text-transform: uppercase;
+          margin: 0;
+          margin-top: -5px;
+          padding: 0;
+          @media (max-width: 980px) {
+            font-size: 15px;
+            letter-spacing: 1.1px;
+          }
+          @media (max-width: 640px) {
+            font-size: 14px;
+          }
+          @media (max-width: 340px) {
+            font-size: 13px;
+          }
+          @media (max-width: 320px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .linkPanel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: inherit;
+      max-width: 780px;
+      padding-left: 50px;
+      @media (max-width: 1024px) {
+        max-width: 700px;
+        padding-left: 20px;
+      }
+      @media (max-width: 980px) {
+        display: none;
+      }
+      .register {
+        width: 115px;
+        margin-left: 15px;
+      }
+      .login {
+        width: 96px;
+        border: 2px solid $primaryBtn;
+        color: $primaryBtn;
+      }
+      a {
+        text-decoration: none;
+        color: $bgBlack;
+        font-family: "Poppins-Medium";
+        font-size: 16px;
+      }
+    }
+    .menuLinks {
+      display: none;
+      @media (max-width: 980px) {
+        display: block;
+      }
+      .menuBtn {
+        min-width: auto;
+        width: 55px !important;
+        height: 45px;
+        box-sizing: border-box;
+        svg {
+          font-size: 23px;
+          @media (max-width: 640px) {
+           font-size: 20px;
+          }
+        }
+        @media (max-width: 640px) {
+          width: 48px !important;
+          height: 36px;
+        }
+        @media (max-width: 340px) {
+          width: 48px !important;
+          height: 38px;
+        }
+        @media (max-width: 320px) {
+          width: 40px !important;
+          height: 35px;
+        }
+      }
+      .loginLink {
+        text-decoration: none;
+        padding-right: 25px;
+        color: $bgBlack;
+        font-family: "Poppins-Medium";
+        font-size: 17px;
+        @media (max-width: 640px) {
+          font-size: 16px;
+          padding-right: 20px;
+        }
+        @media (max-width: 340px) {
+          font-size: 14px;
+          padding-right: 12px;
+        }
+        svg {
+          font-size: 28px;
+          padding-right: 5px;
+          @media (max-width: 640px) {
+            font-size: 20px;
+            padding-right: 3px;
+            margin-top: -2px;
+          }
+          @media (max-width: 340px) {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+.fixePanel {
+  border-radius: 0px 0px 46px 0px;
+  box-shadow: 0px 3px 6px #00000029;
+  padding: 15px 30px;
+  background-color: $bgTextColor !important;
+  @media (max-width: 980px) {
+    border-radius: 0px 0px 30px 0px;
+    padding: 20px 30px;
+  }
+  @media (max-width: 420px) {
+    border-radius: 0px 0px 30px 0px;
+    padding: 20px;
+  }
+  .register {
+    background-color: $primary !important;
+    color: $bgTextColor;
+  }
+  .login {
+    color: $primary !important;
+    border: 2px solid $primary !important;
+  }
+}
